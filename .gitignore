@@ -1,6 +1,9 @@
 /vendor/
 /node_modules/
 /assets/theme.css.tmp
+/.memsearch/
+/dist/
+/exports/
 
 # Local/editor files
 /.vscode/
@@ -14,12 +17,12 @@
 .env
 .env.*
 !.env.example
+/.env.deploy
+
+# Local tool settings
+/tools/*.path
 
 # Logs and caches
 *.log
 /.cache/
 /.phpunit.result.cache
-
-# Generated local release/export artifacts
-/dist/
-/exports/

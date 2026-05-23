@@ -39,9 +39,17 @@
 - ヘッダー・フッターリンクはテンプレート直書きではなく `wp_nav_menu()` で出力する。メインメニュー位置は `primary`、フッターは `footer`。既存デザインに必要なHTML構造は Walker または fallback menu で維持する。
 - 旧デモ用途の ACF グループや文言を残して管理画面を混乱させない。現在のフロントページに不要なフィールド登録は読み込まない。
 
+## [重要]ページのスタイル方針
+
+- 既にテンプレート側で使っている Tailwind 系クラスは、そのまま残す。
+- 新規作成または作り直しのセクション・コンポーネントは、原則としてカスタムクラスを作成してまとめる。
+- 新しい Tailwind ユーティリティを `assets/tailwind.scss` に追加して増やす運用はしない。
+- 既存のカスタムクラスに対する見た目の派生は、`Is` 接頭辞のモディファイアで切り替える。
+- モディファイアを増やす場合、基本スタイルそのものは変えず、バリエーションだけを足す。
+
 ## 専用スキル
 
-このテーマの管理画面編集・ACF・CPT・メニュー化を扱うときは、必要に応じて `.codex/skills/wp-theme-admin-content/SKILL.md` を読む。
+このテーマの管理画面編集・ACF・CPT・メニュー化を扱うときは、必要に応じて `.codex/skills/wp-theme/SKILL.md` を読む。
 
 ## PHP の静的チェック（PHPCS）
 
@@ -53,9 +61,9 @@
 
 つなぐデータベースやサイトは、実行するときの環境設定で決まる。**意図していないサイト／データに対してデモ投入などを流さない**こと（別フォルダのサイトを指していたら、そのサイトの内容が変わる）。
 
-Cursor から Local WP を更新する手順は [LOCAL_CURSOR_CLI.md](./LOCAL_CURSOR_CLI.md)。
+Local WP の初期投入や更新は [LOCAL_WP_CLI.md](./LOCAL_WP_CLI.md)、本番反映は [DEPLOYMENT.md](./DEPLOYMENT.md) と [UPDATE_TO_PROD.md](./UPDATE_TO_PROD.md) を見る。
 
-手順は [NOTE.md](./NOTE.md) と各ファイル先頭のコメント。
+実行手順の詳細は各ファイル先頭のコメントにある。`tools/deploy.sh` は `npm run deploy` と `npm run deploy:prod` の実体。
 
 ## メニューのテーマロケーション
 

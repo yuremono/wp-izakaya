@@ -5,6 +5,8 @@
     "build": "npm run build:css && npm run build:js",
     "build:css": "sass assets/theme.scss assets/theme.css --style=expanded --no-source-map && sass assets/tailwind.scss assets/tailwind.css --style=expanded --no-source-map",
     "build:js": "esbuild assets/src/mindmap-front.ts --bundle --format=iife --outfile=assets/mindmap-runtime.js --minify",
+    "deploy": "bash tools/deploy.sh",
+    "deploy:prod": "bash tools/deploy.sh --delete --import-xml",
     "watch": "sass --watch assets/theme.scss:assets/theme.css assets/tailwind.scss:assets/tailwind.css --style=expanded --no-source-map"
   },
   "dependencies": {
