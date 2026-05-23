@@ -1,0 +1,45 @@
+DEPLOYMENT.md
+  s_cc6f045a63e89d::t_faa7aadb7d50a3 4
+  s_cc6f045a63e89d::t_1280901627bea2 5,7,9-12,14,16-20
+UPDATE_TO_PROD.md
+  s_cc6f045a63e89d::t_faa7aadb7d50a3 4
+  s_cc6f045a63e89d::t_cc01a80942979e 5,7,9-11,13,15-21,23,25-27
+README.md
+  s_cc6f045a63e89d::t_faa7aadb7d50a3 50
+.codex/skills/wp-deploy/SKILL.md
+  s_cc6f045a63e89d::t_7ec404475a18fc 1-8,10-17,19,21,26,77-81,83-86
+  s_cc6f045a63e89d::t_9936822ca184fe 9,18,20,22-25,27-76,82
+tools/deploy.sh
+  s_cc6f045a63e89d::t_3ea8f8acdd188c 42-67,159,175,239,261
+tools/AGENTS.md
+  s_cc6f045a63e89d::t_faa7aadb7d50a3 9
+  s_cc6f045a63e89d::t_5b2120e57cee84 46
+.codex/skills/wp-deploy/references/deploy.md
+  s_cc6f045a63e89d::t_7ec404475a18fc 1-9,11-12,14,21-29,31-36,47-52
+  s_cc6f045a63e89d::t_820c2f21ec60cc 10,13,15-20,30,37-46,53
+.codex/skills/wp-deploy/agents/openai.yaml
+  s_cc6f045a63e89d::t_7ec404475a18fc 1-4
+AGENTS.md
+  s_cc6f045a63e89d::t_faa7aadb7d50a3 65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "3ec3d39039c67d95c0d82b734148017da28ef1c6",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_cc6f045a63e89d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e5461-8a88-7d92-be18-c877aa055c3f",
+        "model": "gpt-5.4-mini"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
