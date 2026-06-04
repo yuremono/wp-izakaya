@@ -317,7 +317,8 @@ function theme_header_nav_fallback_menu( $args = array() ): void {
 
 	echo '<ul class="NavUl">';
 	echo '<li class="NavLi"><a href="' . esc_url( home_url( '/' ) ) . '">HOME</a></li>';
-	echo '<li class="NavLi [font-family:--Ship]"><a href="' . esc_url( home_url( '/bunmyaku' ) ) . '">文脈</a></li>';
+	echo '<li class="NavLi [font-family:--Ship]"><a href="' . esc_url( home_url( '/quests' ) ) . '">Quests</a></li>';
+	echo '<li class="NavLi [font-family:--Ship]"><a href="' . esc_url( home_url( '/quests-service' ) ) . '">QuestsService</a></li>';
 	echo '<li class="NavLi NavDrop">';
 	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '<button type="button" class="DropA DropToggle" popovertarget="HeaderRepositoriesMenu-cylinder">Repositories' . theme_phosphor_icon(
@@ -351,7 +352,6 @@ function theme_header_nav_fallback_menu( $args = array() ): void {
 	echo '<button type="button" class="DropBtn DropToggle" popovertarget="HeaderPagesMenu-cylinder" aria-label="Toggle pages submenu"></button>';
 	echo '<ul id="HeaderPagesMenu-cylinder" class="DropUl" popover="auto" aria-label="Pages">';
 	echo '<li class="DropLi"><a href="' . esc_url( home_url( '/preview' ) ) . '">BurnYourOwnStyle</a></li>';
-	echo '<li class="DropLi [font-family:--Ship]"><a href="' . esc_url( home_url( '/bunmyaku' ) ) . '">文脈</a></li>';
 	echo '<li class="DropLi"><a href="' . esc_url( home_url( '/donut' ) ) . '">Donut<small>(ADCMS)</small></a></li>';
 	echo '<li class="DropLi"><a href="' . esc_url( home_url( '/rects' ) ) . '">RandomGenerator</a></li>';
 	echo '<li class="DropLi"><a href="' . esc_url( home_url( '/shuffleDivide' ) ) . '">ShuffleDivide</a></li>';
@@ -380,8 +380,13 @@ function theme_portfolio_footer_fallback_menu( $args = array() ): void {
 			'label' => 'BurnYourOwnStyle',
 		),
 		array(
-			'url'   => home_url( '/bunmyaku' ),
-			'label' => '文脈',
+			'url'   => home_url( '/quests' ),
+			'label' => 'Quests',
+			'class' => '[font-family:--Ship]',
+		),
+		array(
+			'url'   => home_url( '/quests-service' ),
+			'label' => 'QuestsService',
 			'class' => '[font-family:--Ship]',
 		),
 		array(

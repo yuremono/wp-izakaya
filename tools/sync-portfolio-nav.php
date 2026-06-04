@@ -156,9 +156,14 @@ $primary_items = array(
 		'url'   => $home,
 	),
 	array(
-		'key'   => 'bunmyaku',
-		'title' => '文脈',
-		'url'   => home_url( '/bunmyaku' ),
+		'key'   => 'quests',
+		'title' => 'Quests',
+		'url'   => home_url( '/quests' ),
+	),
+	array(
+		'key'   => 'quests-service',
+		'title' => 'QuestsService',
+		'url'   => home_url( '/quests-service' ),
 	),
 	array(
 		'key'   => 'repositories',
@@ -233,11 +238,6 @@ $primary_items = array(
 	),
 	array(
 		'parent_key' => 'pages',
-		'title'      => '文脈',
-		'url'        => home_url( '/bunmyaku' ),
-	),
-	array(
-		'parent_key' => 'pages',
 		'title'      => 'Donut(ADCMS)',
 		'url'        => home_url( '/donut' ),
 	),
@@ -293,8 +293,12 @@ $footer_items = array(
 		'url'   => home_url( '/preview' ),
 	),
 	array(
-		'title' => '文脈',
-		'url'   => home_url( '/bunmyaku' ),
+		'title' => 'Quests',
+		'url'   => home_url( '/quests' ),
+	),
+	array(
+		'title' => 'QuestsService',
+		'url'   => home_url( '/quests-service' ),
 	),
 	array(
 		'title' => 'Donut(ADCMS)',
