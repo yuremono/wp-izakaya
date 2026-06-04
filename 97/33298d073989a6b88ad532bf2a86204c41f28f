@@ -1,0 +1,28 @@
+template-parts/quests/content-service.php
+  s_604871b12a696d::t_c084834c833b91 134,138,144,148,320
+  s_604871b12a696d::t_be9915bcd6862a 152
+  h_53dad1e32c3c71 44-46,59-60,72-74,80-81,94-96,107-113,128-129,135-137,139-140,145-147,149-150,176-177,188-190,201-203,248-250,259-288,294
+docs/quests.md
+  s_604871b12a696d::t_9502dc0ea719ab 1-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "9733298d073989a6b88ad532bf2a86204c41f28f",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_604871b12a696d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e926c-ceab-7350-97fb-62780d06e209",
+        "model": "gpt-5.4-mini"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
