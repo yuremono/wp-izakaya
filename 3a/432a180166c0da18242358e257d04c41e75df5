@@ -1,0 +1,152 @@
+assets/quests/css/common.css
+  s_b1d921f3163a0f::t_1e360bb163c760 1-27
+  h_53dad1e32c3c71 28-30
+template-parts/quests/content-top.php
+  h_53dad1e32c3c71 185
+  s_b1d921f3163a0f::t_20ce7bff1a1639 22,25,28,96,100,106,110,215,253,288
+  s_e9fe110c5aadcb::t_1e9b1ef10bfa1d 1-21,23-24,26-27,29-33,36-41,44-46,58-67,69-73,75-77,79-95,97-99,101-105,107-109,111-115,118-120,123-135,137-142,145-156,160-171,175-184,186,190-193,199-205,207-214,216-237,239,241,243,245-252,254-282
+  s_a85edb88d70e04::t_414ecc2eb41076 68
+  s_a85edb88d70e04::t_e5be0305dfba60 74,78,121-122,136,143-144,157-159,172-174,187-189,194-198,206
+  s_a85edb88d70e04::t_7d87b00ca7cc40 48-57,240
+  s_a85edb88d70e04::t_34a050066e45a7 34-35,42-43,47,116-117
+  s_a85edb88d70e04::t_60d9b55d7176a0 238,242,244
+header-quests.php
+  s_b1d921f3163a0f::t_eeb845eeacf4d1 10
+  h_53dad1e32c3c71 19
+  s_b1d921f3163a0f::t_a30de76374093c 1-9,11-16,18,20-23
+  s_b1d921f3163a0f::t_a8263d0ff250a8 17
+template-parts/quests/footer.php
+  s_a85edb88d70e04::t_e5be0305dfba60 25-30
+  s_e9fe110c5aadcb::t_1e9b1ef10bfa1d 1-19,21-24,31,33-36
+  s_a85edb88d70e04::t_34a050066e45a7 20,32
+assets/quests/service.html
+  s_a85edb88d70e04::t_f86da0201179e3 1-9,11,14-69,71-78,80-83,89-107,109-121,137-146,149-152,155-165,168-177,179,182,184,186,191,194-217,219-222,224-235,237-238,240-243,245-246,248-251,253-254,256-259,261-272,274-275,277-280,282-283,285-288,290-291,293-296,298-299,301-305,307-317,319-327,330-350,352-355,362,364-369
+  s_a85edb88d70e04::t_b6ee0eba96a69f 10,223,236,239,244,247,252,255,260,273,276,281,284,289,292,297,300,318
+  s_a85edb88d70e04::t_7addaf71ced270 12-13,70,122,147,178,180,328,351,363
+  s_a85edb88d70e04::t_50c67e4de79472 79,84-88,108,123-136,148,153-154,166-167,181,183,185,187-190,192-193,218,306,329,356-361
+assets/quests/css/service_html.css
+  h_53dad1e32c3c71 1-401,403-542
+  s_b1d921f3163a0f::t_3992238396d75f 402
+footer-quests.php
+  s_a2493e669b7369::t_6f6b2cb782e6e5 1-13,17-18
+  s_e9fe110c5aadcb::t_25df0223347405 14-16
+.gitignore
+  h_53dad1e32c3c71 7
+functions.php
+  s_e6ae483cb8d685::t_f507cc95014838 31
+assets/quests/index.html
+  s_a85edb88d70e04::t_7addaf71ced270 115-116,122-123,126,182,331,343
+  s_604871b12a696d::t_c6dbb6531ef7e5 1-9,11,13-70,72-79,81-84,90-114,117-121,124-125,137-145,147-150,153-181,184-194,196-200,203-213,216-226,229-239,242-244,248-256,258-285,290-330,332-335,342,344-349
+  s_a85edb88d70e04::t_7d87b00ca7cc40 127-136,287
+  s_a85edb88d70e04::t_60d9b55d7176a0 286,288-289
+  s_a85edb88d70e04::t_f86da0201179e3 146
+  s_a85edb88d70e04::t_fcd39ab2b4e357 10,12
+  s_a85edb88d70e04::t_5be92891ca7c79 71
+  s_a85edb88d70e04::t_8ca874fc17d64f 80,85-89,151-152,183,195,201-202,214-215,227-228,240-241,245-247,257,336-341
+docs/quests.md
+  s_e9fe110c5aadcb::t_554ff890bc0d70 46,72,78-80,107-109
+  s_e9fe110c5aadcb::t_3b7b1025d6e14b 67-71,75-77,81,94-100,104-105
+  s_e9fe110c5aadcb::t_4e1032b6ac96c9 73-74,101-103,110-117
+page-templates/page-quests.php
+  s_a2493e669b7369::t_8ab2735b2866b1 1-15,17,19
+  s_a2493e669b7369::t_646149a5de03eb 16,18
+template-parts/quests/header.php
+  h_53dad1e32c3c71 18,20,22
+  s_a85edb88d70e04::t_e5be0305dfba60 27,32-36
+  s_e9fe110c5aadcb::t_1e9b1ef10bfa1d 1-17,19,23-26,28-31,37-42
+  s_b1d921f3163a0f::t_20ce7bff1a1639 21
+page-templates/page-quests-service.php
+  s_a2493e669b7369::t_116adfdcbda2eb 1-15,17,19
+  s_a2493e669b7369::t_646149a5de03eb 16,18
+inc/setup.php
+  s_e9fe110c5aadcb::t_4f50c23abe007f 22-24,33-36,60-63
+template-parts/quests/content-service.php
+  s_a85edb88d70e04::t_3b75ae4691f0b3 29,46-59,72-73,79-80,93-95,113,115,117,119-122,124-125,249
+  s_a85edb88d70e04::t_414ecc2eb41076 163,205,256,261,266,271,277,282
+  s_e9fe110c5aadcb::t_1e9b1ef10bfa1d 287
+  s_e9fe110c5aadcb::t_576aec8b52e740 103,150
+  h_53dad1e32c3c71 22,288
+  s_a85edb88d70e04::t_34a050066e45a7 45,71,106-107,112,290
+  s_a85edb88d70e04::t_b6ee0eba96a69f 159,173,176,181,185,191,194,201,214,217,222,225,230,233,238,241,272
+assets/quests/js/function.js
+  s_a2493e669b7369::t_7d0f5a605f442b 1-22,24-32,34-59,61-222,232-679
+  h_53dad1e32c3c71 23,33,60,223-231
+.codex/skills/html-to-wp/SKILL.md
+  s_e9fe110c5aadcb::t_657e6a9e1f9da3 41-58,67-68,87-99,101-116,130-140
+  s_e9fe110c5aadcb::t_4cfa82566d16e6 59-66,69,100,117-129
+inc/quests-static.php
+  s_a2493e669b7369::t_1019e736273f66 1-46
+assets/quests/css/common_style.css
+  s_b1d921f3163a0f::t_1e360bb163c760 2727-2728,3200,4342,4355,4380,4849,4852,4858,4861,4864,4867,4870,4873,4935,4978,5515,5829,9237,9364,12110-12111,14781-14782,15195,17465,17601,17992,18158
+  h_53dad1e32c3c71 1-2726,2729-3199,3201-4341,4343-4354,4356-4379,4381-4848,4850-4851,4853-4857,4859-4860,4862-4863,4865-4866,4868-4869,4871-4872,4874-4934,4936-4977,4979-5514,5516-5828,5830-9236,9238-9363,9365-12109,12112-14780,14783-15194,15196-17464,17466-17600,17602-17991,17993-18157,18159-23474
+inc/enqueue.php
+  s_e9fe110c5aadcb::t_cb35a8592c5b88 278-281
+  s_e9fe110c5aadcb::t_16f9c23ae2b425 249-258
+  s_b1d921f3163a0f::t_d38ba399c6ae4a 114-115,117,121-124,130,135-136,138,142-145,152,161,165-185
+  s_e6ae483cb8d685::t_f047904d8e48bc 266
+  s_e6ae483cb8d685::t_01cb2a3b5d4ae3 43,50,61,72,85-113,116,118-120,125-129,131-134,137,139-141,146,158-160,186-187,189-248,259-265,267-268
+  s_e9fe110c5aadcb::t_ec3fa09ae6ea66 188
+  s_e9fe110c5aadcb::t_8dd6b5719b791f 272-277,282-283
+  s_e9fe110c5aadcb::t_d3a73ec3aff4bc 147-151,153-157,162-164,269-271
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "3a432a180166c0da18242358e257d04c41e75df5",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_604871b12a696d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e926c-ceab-7350-97fb-62780d06e209",
+        "model": "gpt-5.4-mini"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    },
+    "s_a2493e669b7369": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e91fa-0567-7cd3-ae47-fa5d2e3ae63f",
+        "model": "gpt-5.4-mini"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    },
+    "s_a85edb88d70e04": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e92cf-3763-7a82-b806-84f070b924ad",
+        "model": "gpt-5.5"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    },
+    "s_b1d921f3163a0f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e9243-85c1-7130-8355-717af6c75e40",
+        "model": "gpt-5.4-mini"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    },
+    "s_e6ae483cb8d685": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e919c-1405-7fc0-836e-2fa057f68035",
+        "model": "gpt-5.4-mini"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    },
+    "s_e9fe110c5aadcb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e92b4-8a70-72c2-a938-2bdfcd336ca9",
+        "model": "gpt-5.5"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
