@@ -1,43 +1,62 @@
 # Quests ページ構成
 
-Quests 系ページの実装場所と、静的コピーとの対応をまとめたドキュメントです。
+Quests 系ページを WordPress 化したときの FileTree と作業工程をまとめたメモです。
+`html-to-wp` スキルの流れをベースにしつつ、このプロジェクトで実際に必要だった差分も含めています。
 
-## テンプレート
+## FileTree
 
-- [page-quests.php](../page-templates/page-quests.php): Quests 通常ページのテンプレート
-- [page-quests-service.php](../page-templates/page-quests-service.php): Quests サービスページのテンプレート
-- [header-quests.php](../header-quests.php): Quests 専用ヘッダー
-- [footer-quests.php](../footer-quests.php): Quests 専用フッター
+```text
+header-quests.php
+footer-quests.php
+inc/quests-static.php
+page-templates/
+  page-quests.php
+  page-quests-service.php
+template-parts/
+  quests/
+    header.php
+    footer.php
+    content-top.php
+    content-service.php
+assets/
+  quests/
+    index.html
+    service.html
+    css/
+      common.css
+      common_style.css
+      style.css
+      service_html.css
+    js/
+      function.js
+      flipsnap.min.js
+      slick/
+      scroll-hint/
+      magnific-popup/
+    images/
+      home/
+      picture/
+      placeholder/
+```
 
-## テンプレートパーツ
+## 実装工程
 
-- [template-parts/quests/content-top.php](../template-parts/quests/content-top.php): トップページ本文
-- [template-parts/quests/content-service.php](../template-parts/quests/content-service.php): サービスページ本文
-- [template-parts/quests/header.php](../template-parts/quests/header.php): ページヘッダーの共通マークアップ
-- [template-parts/quests/footer.php](../template-parts/quests/footer.php): ページフッターの共通マークアップ
+1. 既存の静的 HTML を確認し、Quests のトップページとサービスページを切り出した。
+2. 共通の WordPress 側構成として `header-quests.php` と `footer-quests.php` を用意した。
+3. `page-templates/page-quests.php` と `page-templates/page-quests-service.php` を作成し、各ページを専用テンプレートに分岐した。
+4. `inc/quests-static.php` に `theme_quests_source_uri()` と `theme_quests_body_classes()` を実装し、静的アセット参照と body class を共通化した。
+5. `template-parts/quests/content-top.php` と `template-parts/quests/content-service.php` に本文を移植した。
+6. `assets/quests/index.html` と `assets/quests/service.html` の head / script / stylesheet の並びを確認し、元のコピーと差分が出ないよう調整した。
+7. `assets/quests/index.html` に混入していた重複 canonical を整理した。
+8. サービスページの画像参照を `theme_quests_source_uri()` 経由に統一した。
+9. `docs/quests.md` を、現在の FileTree と作業工程に合わせて更新した。
 
-## 共通ヘルパー
+## このプロジェクトで追加で必要だった確認
 
-- [inc/quests-static.php](../inc/quests-static.php): Quests 共通ヘルパー
-- `theme_quests_source_uri()`: `assets/quests/` 配下の静的ファイル参照を組み立てる helper
-- `theme_quests_body_classes()`: Quests ページ用の body class を返す helper
+`html-to-wp` の標準的な流れだけでは足りず、以下を実際のプロジェクト状態から判断して追加した。
 
-## 静的ソース
+- 静的 HTML と WordPress テンプレートの読み込み順比較
+- `assets/quests/index.html` の重複 canonical の整理
+- サービスページ画像の helper 化
+- 静的コピーと PHP テンプレートの参照先差分の照合
 
-- [assets/quests/index.html](../assets/quests/index.html): 通常ページの静的コピー
-- [assets/quests/service.html](../assets/quests/service.html): サービスページの静的コピー
-
-## 静的アセット
-
-- [assets/quests/css/common.css](../assets/quests/css/common.css): 共通スタイル
-- [assets/quests/css/common_style.css](../assets/quests/css/common_style.css): 共通の追加スタイル
-- [assets/quests/css/style.css](../assets/quests/css/style.css): トップページ固有スタイル
-- [assets/quests/css/service_html.css](../assets/quests/css/service_html.css): サービスページ固有スタイル
-- [assets/quests/js/flipsnap.min.js](../assets/quests/js/flipsnap.min.js): 横スクロール用スクリプト
-- [assets/quests/js/function.js](../assets/quests/js/function.js): Quests 共通の挙動
-
-## 画像参照ルール
-
-- PHP テンプレートでは、`assets/quests/images/...` を直接書かず `<?php echo esc_url( theme_quests_source_uri( 'images/...') ); ?>` を使う
-- サービスページの画像は `template-parts/quests/content-service.php` で helper 化済み
-- 静的 HTML のコピーを更新する場合も、同じファイル構成を前提に参照先を合わせる
