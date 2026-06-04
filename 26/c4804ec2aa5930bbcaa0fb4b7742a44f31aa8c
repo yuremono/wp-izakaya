@@ -1,0 +1,24 @@
+docs/quests.md
+  s_604871b12a696d::t_1e614172094577 3,8-40,43,45-65,67,69-77
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "26c4804ec2aa5930bbcaa0fb4b7742a44f31aa8c",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_604871b12a696d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e926c-ceab-7350-97fb-62780d06e209",
+        "model": "gpt-5.4-mini"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
