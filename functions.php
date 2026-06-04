@@ -28,6 +28,7 @@ require_once get_template_directory() . '/inc/portfolio-defaults.php';
 require_once get_template_directory() . '/inc/cpt.php';
 require_once get_template_directory() . '/inc/front-page-data.php';
 require_once get_template_directory() . '/inc/demo-content.php';
+require_once get_template_directory() . '/inc/quests-static.php';
 require_once get_template_directory() . '/inc/setup.php';
 require_once get_template_directory() . '/inc/enqueue.php';
 require_once get_template_directory() . '/inc/acf-portfolio-front.php';

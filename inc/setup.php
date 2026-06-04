@@ -19,7 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function theme_add_layout_body_class( array $classes ): array {
 	$classes[] = 'root';
-	$classes[] = 'SiteTransitionPending';
+	if ( ! is_page_template( array( 'page-templates/page-quests.php', 'page-templates/page-quests-service.php' ) ) ) {
+		$classes[] = 'SiteTransitionPending';
+	}
 	return $classes;
 }
 add_filter( 'body_class', 'theme_add_layout_body_class' );
@@ -28,6 +30,10 @@ add_filter( 'body_class', 'theme_add_layout_body_class' );
  * Render the shared opening / transition overlay.
  */
 function theme_render_site_transition_overlay(): void {
+	if ( is_page_template( array( 'page-templates/page-quests.php', 'page-templates/page-quests-service.php' ) ) ) {
+		return;
+	}
+
 	$brand = theme_brand();
 	$brand = trim( $brand );
 	if ( '' === $brand ) {
@@ -51,6 +57,10 @@ add_action( 'wp_body_open', 'theme_render_site_transition_overlay' );
  * Hide the page contents until the transition overlay has taken over.
  */
 function theme_render_site_transition_noscript_style(): void {
+	if ( is_page_template( array( 'page-templates/page-quests.php', 'page-templates/page-quests-service.php' ) ) ) {
+		return;
+	}
+
 	?>
 	<noscript>
 		<style>

@@ -4,6 +4,7 @@
 /.memsearch/
 /dist/
 /exports/
+/.serena/
 
 # Local/editor files
 /.vscode/
