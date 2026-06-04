@@ -1,0 +1,26 @@
+inc/setup.php
+  s_a43cffa7cd7388::t_b7ce714ecd9227 320-321,383-389
+tools/sync-portfolio-nav.php
+  s_a43cffa7cd7388::t_bf06c2a9724738 159-166,296-301
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "7fc423e7e7c3115fe3dc3527f9b72c0a6d43df52",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_a43cffa7cd7388": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e92f5-09c3-72f2-957e-4b5b6df1bec6",
+        "model": "gpt-5.5"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
