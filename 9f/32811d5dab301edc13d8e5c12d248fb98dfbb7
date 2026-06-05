@@ -1,0 +1,44 @@
+page-templates/quests-top.php
+  s_4c95e5359ab111::t_60edbc5ba0fee1 16-18
+tools/AGENTS.md
+  s_4c95e5359ab111::t_60edbc5ba0fee1 25
+tools-domain/AGENTS.md
+  s_4c95e5359ab111::t_60edbc5ba0fee1 1-56
+inc/quests-static.php
+  s_4c95e5359ab111::t_60edbc5ba0fee1 18,22
+AGENTS.md
+  s_4c95e5359ab111::t_60edbc5ba0fee1 37
+tools-domain/bootstrap-quests-site.php
+  s_4c95e5359ab111::t_19e4e44936e106 42
+  s_4c95e5359ab111::t_c2e2826b939abf 1-41,43-201
+README.md
+  s_4c95e5359ab111::t_60edbc5ba0fee1 77-79
+front-page.php
+  s_4c95e5359ab111::t_60edbc5ba0fee1 15-17
+page-templates/quests-service.php
+  s_4c95e5359ab111::t_60edbc5ba0fee1 16-18
+inc/enqueue.php
+  s_4c95e5359ab111::t_60edbc5ba0fee1 48,50,55,57,62,64,69,71,76,78,84,86,93,95,101,103,108,110,115,117,149,151,157,159,165,167,173,175,192,198,200
+  s_4c95e5359ab111::t_c2e2826b939abf 181
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "9f32811d5dab301edc13d8e5c12d248fb98dfbb7",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_4c95e5359ab111": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e971f-3983-71f2-a277-5b43c29a5502",
+        "model": "gpt-5.4"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
