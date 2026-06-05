@@ -1,0 +1,35 @@
+style.css
+  s_46c2dbaa79061d::t_f3b65d27ebdda8 2,6
+inc/quests-static.php
+  s_46c2dbaa79061d::t_f3b65d27ebdda8 48-58
+inc/setup.php
+  s_46c2dbaa79061d::t_f3b65d27ebdda8 22,33,60
+front-page.php
+  s_46c2dbaa79061d::t_f3b65d27ebdda8 3,10-12,14-18
+inc/enqueue.php
+  s_46c2dbaa79061d::t_1c5b2f5cf439b9 18-25,118
+  s_46c2dbaa79061d::t_f3b65d27ebdda8 27,87,150,274
+QUESTS_DEPLOYMENT.md
+  s_46c2dbaa79061d::t_6197f2f7568a7c 1-36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "db4850eb1094ae2b804418f4cdf0958ab5c4b9c8",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_46c2dbaa79061d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e96cc-833e-7ff0-9162-31a7a36d7731",
+        "model": "gpt-5.5"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
