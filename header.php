@@ -5,6 +5,12 @@
  * @package Theme
  */
 
+declare(strict_types=1);
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -13,5 +19,5 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class( theme_quests_body_classes() ); ?>>
 <?php wp_body_open(); ?>

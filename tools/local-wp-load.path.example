@@ -1,7 +1,0 @@
-# コピーして local-wp-load.path にリネームし、次の 1 行だけを自分の環境に合わせる（# で始まる行は無視される）。
-#
-# 「Local Sites」の直下にあるフォルダ名はサイト作成時に決まります。
-# Local で「Reveal in Finder」すると実際の名前が分かります。異なる名前のまま書くと `ln` や PHP スクリプトがパス無しになります。
-#
-# 例（この環境での検証用サイト名）。自分の名前に読み替えてください。
-~/Local Sites/yuremono-wp/app/public/wp-load.php

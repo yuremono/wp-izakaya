@@ -1,6 +1,5 @@
 /*
 Theme Name: Quests
-Theme URI: https://github.com/yuremono/portfolio
 Author: yuremono
 Author URI: https://github.com/yuremono
 Description: Quests のトップページとサービスページを公開するためのカスタムテーマです。
@@ -11,8 +10,4 @@ Requires PHP: 8.0
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: site-theme
-
-Portfolio front page styles are compiled into assets/theme.css.
 */
-
-/* Critical tokens live in assets/theme.css (loaded via functions.php). */

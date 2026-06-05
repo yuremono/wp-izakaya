@@ -1,6 +1,6 @@
 {
-  "name": "portfolio-corporate/theme",
-  "description": "Development tooling for the portfolio-corporate WordPress theme",
+  "name": "quests/theme",
+  "description": "Development tooling for the Quests WordPress theme",
   "license": "GPL-2.0-or-later",
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^1.0",

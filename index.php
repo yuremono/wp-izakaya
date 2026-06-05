@@ -16,7 +16,7 @@ get_header();
 ?>
 
 <section class="archive wrap">
-	<h1 class="archive_title"><?php echo esc_html( theme_brand() ); ?></h1>
+	<h1 class="archive_title"><?php echo esc_html( THEME_BRAND_DEFAULT ); ?></h1>
 	<p class="archive_empty"><?php esc_html_e( 'ページが見つかりませんでした。メニューからお進みください。', THEME_GETTEXT_DOMAIN ); ?></p>
 </section>
 

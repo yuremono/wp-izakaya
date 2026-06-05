@@ -34,7 +34,7 @@ if ( ! function_exists( 'theme_quests_body_classes' ) ) {
 	function theme_quests_body_classes(): array {
 		$classes = array( 'QuestsPage' );
 
-		if ( is_page_template( 'page-templates/page-quests-service.php' ) ) {
+		if ( is_page_template( 'page-templates/quests-service.php' ) ) {
 			$classes[] = 'QuestsPageService';
 		} else {
 			$classes[] = 'QuestsPageTop';
@@ -52,7 +52,7 @@ if ( ! function_exists( 'theme_is_quests_view' ) ) {
 	 * @return bool
 	 */
 	function theme_is_quests_view(): bool {
-		return is_front_page() || is_page_template( array( 'page-templates/page-quests.php', 'page-templates/page-quests-service.php' ) );
+		return is_front_page() || is_page_template( array( 'page-templates/quests-top.php', 'page-templates/quests-service.php' ) );
 	}
 }
 

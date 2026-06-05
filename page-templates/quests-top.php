@@ -1,11 +1,12 @@
 <?php
 /**
- * Quests front page.
+ * Template Name: Quests Top
+ * Template Post Type: page
  *
  * @package Theme
  */
 
-declare(strict_types=1);
+declare( strict_types=1 );
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
