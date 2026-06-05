@@ -1,0 +1,48 @@
+tools/deploy.sh
+  s_46c2dbaa79061d::t_27854068fafe19 2-8
+  s_46c2dbaa79061d::t_6efe4fe50db6d3 68,152
+  s_46c2dbaa79061d::t_19038d6f06094a 76-106
+tools/quests/deploy-quests.sh
+  s_46c2dbaa79061d::t_1a010d82e4b250 1-10
+tools/local-wp-load.path.example
+  s_46c2dbaa79061d::t_30a929c0891f96 6-7
+AGENTS.md
+  s_46c2dbaa79061d::t_30a929c0891f96 37
+tools/AGENTS.md
+  s_46c2dbaa79061d::t_27854068fafe19 1-16,18,20,22,24-26,28-29,31-42
+  s_46c2dbaa79061d::t_9ee00c3b4996c8 17,19,21,23,27,30
+README.md
+  s_46c2dbaa79061d::t_4546635e70e492 25,72-73,75,80-81
+  s_46c2dbaa79061d::t_30a929c0891f96 74,76-78
+  s_46c2dbaa79061d::t_1a010d82e4b250 79
+tools/quests/run-bootstrap-quests-site.sh
+  ai_agent 1-96
+tools/quests/bootstrap-quests-site.php
+  s_46c2dbaa79061d::t_27854068fafe19 1-201
+tools/quests/sync-quests-nav.php
+  s_46c2dbaa79061d::t_27854068fafe19 1-10
+tools/quests/AGENTS.md
+  s_46c2dbaa79061d::t_1a010d82e4b250 26-27,35-40
+  s_46c2dbaa79061d::t_27854068fafe19 1-25,28-34,41-56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "4343faef534c4f654d6b567e37bb53c58d6e3043",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_46c2dbaa79061d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e96cc-833e-7ff0-9162-31a7a36d7731",
+        "model": "gpt-5.5"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
