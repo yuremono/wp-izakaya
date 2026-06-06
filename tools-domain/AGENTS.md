@@ -1,56 +1,19 @@
 # tools-domain/
 
-`tools-domain/` は、Quests テーマと `https://yuremono.com/quests/` 用 WordPress に固有の補助ツールを置く場所です。
+テーマごとに値を変更する補助ツールの雛形を置く。
 
-## 対象
+## 使用前の手順
 
-- ローカル WordPress: `http://localhost:10014/`
-- ローカル `wp-load.php`: `~/Local Sites/quests/app/public/wp-load.php`
-- 本番 WordPress: `https://yuremono.com/quests/`
-- 本番テーマ: `~/yuremono.com/public_html/quests/wp-content/themes/quests/`
-
-同じ WordPress 内では固定ページ、メニュー、ACF入力値が共有されます。Quests の初期化ツールは、Quests 専用 WordPress にだけ実行します。
+1. このリポジトリ自体を直接案件用に書き換えず、ディレクトリ全体をコピーする。
+2. コピー先で `example-theme`、`Example`、ローカルパス、本番パスを案件の値へ置換する。
+3. `bootstrap-site.example.php` 冒頭の `$config` を確認する。
+4. 実行対象の `wp-load.php` が意図した WordPress であることを確認してから実行する。
 
 ## ファイル
 
-- `bootstrap-quests-site.php`
-  - `quests` テーマを有効化する。
-  - ACF が配置済みなら有効化する。
-  - `Front` / `Service` 固定ページを作成または更新する。
-  - `Front` をホームページに設定する。
-  - `Quests Navigation` を作成し、`primary` に割り当てる。
-- `run-bootstrap-quests-site.sh`
-  - Local 付属 PHP と実行中の Local `php.ini` を探して `bootstrap-quests-site.php` を実行する。
-- `sync-quests-nav.php`
-  - Quests 用ナビゲーションを同期する。実体は `bootstrap-quests-site.php` と同じ処理。
-- `deploy-quests.sh`
-  - 汎用 `tools/deploy.sh` に `DEPLOY_THEME_SLUG=quests` と `DEPLOY_ZIP_NAME=quests-theme.zip` を渡す Quests 専用ラッパー。
+- `bootstrap-site.example.php`: テーマ有効化、Front / Example 固定ページ、ホーム設定、メニュー作成。
+- `run-bootstrap-site.example.sh`: ローカル PHP から bootstrap を実行するラッパー。
+- `sync-nav.example.php`: bootstrap と同じ設定でメニューを同期する入口。
+- `deploy-theme.example.sh`: `tools/deploy.sh` に案件固有のテーマスラッグと ZIP 名を渡す。
 
-## 実行例
-
-ローカル:
-
-```bash
-tools-domain/run-bootstrap-quests-site.sh
-```
-
-Quests テーマとして ZIP 作成または本番同期する場合:
-
-```bash
-tools-domain/deploy-quests.sh --zip-only
-```
-
-本番で WP-CLI から実行する場合:
-
-```bash
-cd ~/yuremono.com/public_html/quests
-wp eval-file wp-content/themes/quests/tools-domain/bootstrap-quests-site.php
-```
-
-通常の `tools/deploy.sh` は `tools/` を本番テーマに同期しません。本番初期化は、必要な場合だけ SSH + WP-CLI で明示的に実行します。
-
-## 注意
-
-- 旧 `portfolio-wp` 用の `work` / `news` / 標準ページ seed は使用しない。
-- ルート `https://yuremono.com/` 側 WordPress には実行しない。
-- 既存編集を強制上書きする処理を追加する場合は、別スクリプトまたは明示的なオプションに分ける。
+既存ページとメニュー項目を更新するため、設定値を置換する前に実行してはいけない。

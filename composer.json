@@ -1,6 +1,6 @@
 {
-  "name": "quests/theme",
-  "description": "Development tooling for the Quests WordPress theme",
+  "name": "example/theme",
+  "description": "Development tooling for a reusable WordPress theme template",
   "license": "GPL-2.0-or-later",
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^1.0",

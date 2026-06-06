@@ -149,7 +149,7 @@ stage_theme() {
 
 make_zip() {
 	local stage_dir
-	stage_dir="$(mktemp -d "${TMPDIR:-/tmp}/quests-theme.XXXXXX")"
+	stage_dir="$(mktemp -d "${TMPDIR:-/tmp}/wp-theme.XXXXXX")"
 	trap "rm -rf '${stage_dir}'" RETURN
 
 	rm -f "$ZIP_PATH"

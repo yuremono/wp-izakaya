@@ -1,6 +1,6 @@
 <?php
 /**
- * Quests front page.
+ * Front page.
  *
  * @package Theme
  */

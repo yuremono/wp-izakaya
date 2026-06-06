@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+#contents .c33 {
+	background-color: var(--mctr);
+	background-image: url(../images/home/sika.png);
+}
+#contents .c33 a.itext, #contents .c33 img, #contents .c33 video {
+	width: 398px;
+	height: 183px;
+}
+#contents .c33 h1,
+#contents .c33 div {
+	text-align: left;
+}#contents .c35 h2,
+#contents .c35 div {
+	text-align: left;
+}

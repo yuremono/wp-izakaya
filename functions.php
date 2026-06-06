@@ -11,18 +11,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/** Translation text domain. */
-define( 'THEME_GETTEXT_DOMAIN', 'site-theme' );
+define( 'THEME_GETTEXT_DOMAIN', 'kanoo' );
 
 /** Cache-busting version for theme assets. */
 define( 'THEME_VERSION', '1.0.0' );
 
 if ( ! defined( 'THEME_BRAND_DEFAULT' ) ) {
-	define( 'THEME_BRAND_DEFAULT', 'Quests' );
+	define( 'THEME_BRAND_DEFAULT', '焼酎BAR鹿尾' );
 }
 
 require_once get_template_directory() . '/inc/helpers.php';
-require_once get_template_directory() . '/inc/quests-static.php';
+require_once get_template_directory() . '/inc/template-tags.php';
 require_once get_template_directory() . '/inc/setup.php';
 require_once get_template_directory() . '/inc/enqueue.php';
-require_once get_template_directory() . '/inc/acf-quests-pages.php';
+require_once get_template_directory() . '/inc/acf-pages.php';

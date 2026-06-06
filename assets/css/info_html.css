@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+#contents .c91 {
+	background-color: var(--mctr);
+	background-image: url(../images/home/sika.png);
+}
+#contents .c91 a.itext, #contents .c91 img, #contents .c91 video {
+	width: 398px;
+	height: 183px;
+}
+#contents .c91 h1,
+#contents .c91 div {
+	text-align: left;
+}#contents .c295 {
+	width: var(--base);
+}
+#contents .c295 h2,
+#contents .c295 div {
+	text-align: left;
+}#contents .c302 {
+	background-color: var(--wh70);
+}
+#contents .c302 dl dt {
+	width: 20%;
+}
+#contents .c302 dl dd {
+	width: 80%;
+}#contents .c303 a.itext, #contents .c303 img, #contents .c303 video {
+	width: 440px;
+	height: 397px;
+}#contents .c296 {
+	background-color: var(--wh70);
+}#contents .c305 {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+#contents .c305 > div.box {
+	box-sizing: border-box;
+	overflow: hidden;
+}
+#contents .c305 > div:nth-of-type(1) img {
+	width: 1000px;
+}
+#contents .c305 > div:nth-of-type(2) img {
+	width: 1000px;
+}
+#contents .c305 > div:nth-of-type(3) img {
+	width: 1000px;
+}#contents .c251 {
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+#contents .c251 > div.box {
+	box-sizing: border-box;
+	overflow: hidden;
+}
+#contents .c251 > div:nth-of-type(1) img {
+	width: 400px;
+}
+#contents .c251 > div:nth-of-type(2) img {
+	width: 400px;
+}
+#contents .c251 > div:nth-of-type(3) img {
+	width: 400px;
+}#contents .c306 {
+	background-color: var(--mc);
+	background-image: url(../images/home/bg02.jpg);
+}#contents .c310 a.itext, #contents .c310 img, #contents .c310 video {
+	width: 598px;
+	height: 228px;
+}#contents .c309 h3,
+#contents .c309 div {
+	text-align: left;
+}

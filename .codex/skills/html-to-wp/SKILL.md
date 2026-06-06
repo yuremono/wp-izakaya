@@ -1,140 +1,297 @@
 ---
 name: html-to-wp
-description: 別ディレクトリの静的 HTML サイトを WordPress のテンプレートや共通ヘルパーに変換する。
+description: 別ディレクトリの静的 HTML サイトを、現在の WordPress クラシックテーマ基盤へ移植する。既存実装の検出、資産移植、ページテンプレート化、共通部品化、管理画面化の前段までを扱う。
 ---
 
 # html-to-wp
 
-別ディレクトリにある静的 HTML サイトを WordPress テーマへ移植するときに使う。
+別ディレクトリにある静的 HTML サイトを、作業先リポジトリの既存 WordPress テーマ構成へ移植するときに使う。
+
+## 前提条件
+
+- 作業先は、WP Template Directory をユーザーが複製し、案件固有名へリネームしたテーマディレクトリとする。
+- WP Template Directory 自体を案件用に編集しない。
+- 移植元は `/Users/yanoseiji/projects/0604past-works/` 内にあり、ユーザーが事前に用意したドメイン名のディレクトリを静的 HTML サイトとして参照する。
+- ユーザーが Local by Flywheel に WordPress をインストール済みであることを前提とする。
+- ユーザーが Xserver に公開先の新規サブディレクトリを作成済みであることを前提とする。
+- Local の WordPress テーマディレクトリへ、案件固有テーマディレクトリを指すシンボリックリンクを作成してから移植作業を開始する。
+- シンボリックリンク名は案件固有テーマのディレクトリ名と一致させ、既存リンクや実ディレクトリを誤って上書きしないことを確認する。
+- Local のサイトパス、テーマディレクトリ、公開先サブディレクトリなど前提情報が不足または矛盾している場合は、作業を中断してユーザーへ確認する。
+
+## GitHub 運用
+
+- WP Template Directory ではcommit / pushを行わない。
+- `html-to-wp` の移植作業中は、複製された案件固有テーマでもcommit / pushを行わない。
+- ローカル表示と実装内容に問題がないことをユーザーが確認するまで、新規GitHubリポジトリを作成しない。
+- ユーザー確認後に案件固有テーマ用の新規GitHubリポジトリを作成し、完成状態をcommitしてSSH形式のリモートURLへpushする。
+
+## 最優先ルール
+
+- 作業先の `AGENTS.md`、`README.md`、`docs/theme.example.md`、実ファイルを正とし、このスキルの例より優先する。
+- テンプレート基盤を直接案件化せず、案件用にコピーされた作業先で実装する。
+- 移植元ディレクトリは参照専用とし、HTML、CSS、JavaScript、画像を編集しない。
+- `.bak` は読込・編集・削除しない。
+- 作業開始前に、対象工程がすでに実施済みか確認する。既存ファイルを機械的に上書きしない。
+- ユーザーの未コミット変更を保持し、関係のない変更を戻さない。
+- puppeteer は使わない。
 
 ## 目的
 
-元のレイアウト、資産パス、ページ分岐、読み込み順を保ったまま、保守しやすい WordPress 実装に変換する。
+- 元サイトの見た目、DOM 構造、既存クラス、資産パスの意味、読み込み順、ページ間リンクを保つ。
+- 現行テーマの責務分離、helper、ACF fallback、メニュー、エスケープ規約へ適合させる。
+- 共通ヘッダー、共通フッター、ページ本文、ページ別アセットを重複なく分離する。
+- 移植後に WordPress の URL、管理画面、デプロイへ段階的に移行できる状態を作る。
 
-## 基本方針
+## 現行テーマ基盤の前提
 
-- まずソースの HTML を正として扱う
-- ページ単位で役割を分け、共通部分と固有部分を切り分ける
-- アセットはテーマ経由で参照できる形に寄せる
-- 最終出力は、元の見た目だけでなく読み込み順と構造意図も揃える
-- 案件名や固有名詞はスキル本文に入れず、抽象化した工程だけを残す
+作業先に同等の構成がある場合は、新しい方式を追加せず既存構成を拡張する。
 
-## 典型的な手順
+```text
+header.php
+  HTML 文書開始、language_attributes()、wp_head()、body_class()、wp_body_open()
 
-1. 移植元ディレクトリを確認し、対象ページの入口 HTML を特定する。
-2. 入口 HTML から、共通の `head`、ページ分岐、共通 `header` / `footer`、本文領域を分解して把握する。
-3. ページごとに異なる部分と、複数ページで共通する部分を分類する。
-4. 共通化の単位を決める。
-   - テーマ全体で共有する処理
-   - ページテンプレートで持つ処理
-   - テンプレートパーツに切る処理
-   - 静的アセットとして残す処理
-5. ソース HTML の `head` 内にある `meta`、`link`、`script` の順序を記録する。
-6. 読み込み順を変えないまま、WordPress 側で `wp_head()` / `wp_footer()` / enqueue / 共通ヘルパーに振り分ける。
-7. 各ページの本文をテンプレートパーツに移植し、ページ固有の差分だけを残す。
-8. 画像や静的ファイルの参照は、直書きせず、テーマ URI を組み立てる helper を通す。
-9. ソースの相対パスや重複タグを点検し、WordPress 側で不要な重複が発生しないように整理する。
-10. 同種ページが複数ある場合は、1 ページ目で構造を確立し、2 ページ目以降は同じ枠組みに沿って差分だけを当てる。
-11. 出力された HTML をソースと比較し、読み込み順、タグの有無、画像パス、クラス構成が崩れていないかを確認する。
-12. 必要なら静的コピー側も更新し、WordPress 側の実装と静的参照を一致させる。
+footer.php
+  wp_footer()、閉じタグ
 
-## 推奨ワークフロー
+template-parts/site-header.php
+  共通表示ヘッダー
 
-1. ソース HTML を保存用アセットとしてテーマ内へコピーする。
-2. ソース HTML の `<head>` と末尾 `<script>` を、読み込み順付きで一覧化する。
-3. CSS、JavaScript、画像、フォント、外部 CDN を「全体共通」「移植ページ共通」「ページ固有」に分類する。
-4. 専用ページテンプレートを作り、`get_header( 'name' )`、本文テンプレートパーツ、`get_footer( 'name' )` だけを接続する。
-5. 専用 header には `language_attributes()`、`wp_head()`、`body_class()`、`wp_body_open()` を入れる。
-6. 専用 footer は原則 `wp_footer()` と閉じタグだけにし、script 直書きを残さない。
-7. URI helper を作り、画像や静的アセット参照を `get_theme_file_uri()` 経由に統一する。
-8. 本文 HTML をテンプレートパーツへ移し、画像 `src` と必要な URL だけ helper / escape 化する。
-9. CSS と JavaScript を `wp_enqueue_scripts` に集約し、ページテンプレート条件で対象ページだけに限定する。
-10. 旧式 JavaScript が `$` グローバルを前提にしている場合は、対象ページ内だけで `wp_add_inline_script( 'jquery', 'window.$ = window.jQuery;', 'after' )` のように互換層を置く。
-11. WordPress テーマ側の共通ローディング、ページ遷移、body class、グローバル CSS が移植ページを隠したり壊したりしないか確認する。
-12. 移植ページが独立した見た目を持つ場合は、共通サイト遷移 overlay や pending class を対象外にする。
-13. `curl` で HTTP status、body class、CSS/JS 出力、本文マークアップの有無を確認する。
-14. ブラウザで表示、コンソールエラー、画像、メニュー、スクロール、モーションを確認する。
-15. `php -l`、`git diff --check`、可能なら PHPCS を実行する。
+template-parts/site-footer.php
+  共通表示フッター
 
-## 段階的な移植方針
+front-page.php / page-templates/*.php
+  ページの組み立て
 
-- 初期段階では、静的 HTML の見た目を保つために本文マークアップや既存クラスを大きく変えない。
-- ただし、WordPress 側へ移した時点で `wp_head()`、`wp_footer()`、`body_class()`、`wp_body_open()` は必ず通す。
-- 静的 HTML を直接 include する方式は、構造確認や初期表示確認までの一時手段と考える。
-- 公開前には、ページテンプレート、テンプレートパーツ、enqueue、URI helper へ役割を分離する。
-- 1 ページ目で決めた分離方針を、同じサイト内の 2 ページ目以降にも横展開する。
-- 静的 HTML 由来のパスやコメントは、見た目の再現後に WordPress の URL、メニュー、テンプレート構造へ置き換える。
-- リンク先が未確定の場合は、無理に `home_url()` や仮 slug へ寄せず、要件として `href="#"` などのダミー扱いを明示する。
-- 静的 HTML 由来の無効に見えるタグや空要素でも、既存 JS の selector として使われている可能性があるため、削除前に JS 側の参照を確認する。
+template-parts/*-page-content.php
+  #contents_wrap 以下のページ骨格
 
-## 構成の切り分け
+template-parts/<page>/*.php
+  ページ固有セクション
 
-- `header.php` 相当: 共通の `head` と冒頭ラッパー
-- `footer.php` 相当: 共通の末尾ラッパーとスクリプト群
-- ページテンプレート: ページ固有の組み立て
-- テンプレートパーツ: 本文や繰り返し使う領域
-- 共通ヘルパー: URI 生成、body class、条件分岐などの再利用処理
-- 静的アセット: CSS、JS、画像などのコピー元資産
+inc/enqueue.php
+  CSS / JavaScript の登録、依存、ページ条件
 
-## 実務上の注意
+inc/helpers.php
+  資産バージョンなどの低レベル helper
 
-- `head` の順序は、見た目より優先して保持する
-- 1 つのページで解決した共通化は、他のページにも横展開できる形で残す
-- 差分を追うときは、ファイル全体ではなく、`head`、本文ブロック、末尾スクリプトの順で確認する
-- 画像の差し替えや helper 化は、見た目の修正と同じくらい重要な移植作業として扱う
-- 変換後は、PHP の構文確認と、静的 HTML との比較確認を両方行う
+inc/template-tags.php
+  資産 URI、body class、ページ判定、ACF fallback、安全な出力
+
+inc/acf-pages.php
+  ACF ローカルフィールド
+```
+
+- 通常は `get_header( 'name' )` / `get_footer( 'name' )` 用の専用 header/footer を新設しない。
+- 静的サイトの `<header>` / `<footer>` は、それぞれ `site-header.php` / `site-footer.php` へ移す。
+- `header.php` / `footer.php` は WordPress の文書骨格として維持する。
+- `theme_source_uri()`、`theme_asset_version()`、`theme_meta()`、`theme_image()`、`theme_text()`、`theme_lines()`、`theme_rich()` など既存 helper があれば再利用する。
+- PHP グローバル関数、ACF name は `snake_case`、新規独自 CSS クラスはプロジェクト規約に従う。移植元の既存クラスは変更しない。
+
+## フェーズ 0: 読み取り専用の事前調査
+
+編集前に、作業先と移植元を分けて調査する。
+
+### 作業先
+
+1. `AGENTS.md` と参照先の指示を読む。
+2. `git status --short` で既存変更を把握する。
+3. `README.md`、`docs/theme.example.md`、`functions.php` を読む。
+4. `header.php`、`footer.php`、`front-page.php`、`page-templates/`、`template-parts/` を確認する。
+5. `inc/enqueue.php`、`inc/helpers.php`、`inc/template-tags.php`、`inc/acf-pages.php` を確認する。
+6. `assets/` を確認し、移植済みの CSS、JavaScript、画像がないか調べる。
+7. `composer.json`、テスト、PHPCS、デプロイ手順を確認する。
+
+### 移植元
+
+1. 入口となる全 HTML と対応するページ名を列挙する。
+2. 各 HTML の `head`、表示ヘッダー、本文、表示フッター、末尾 script を分離して比較する。
+3. CSS、JavaScript、画像、フォント、iframe、外部 CDN を一覧化する。
+4. HTML 内の `src`、`href`、CSS の `url()`、JavaScript 内の資産参照を確認する。
+5. ページ別 CSS と共通 CSS、ページ別本文と共通部品を分類する。
+6. 静的出力に含まれる動的生成物や外部サービス由来のスナップショットを特定する。
+
+## 実施済み工程の判定
+
+作業前に、次の状態を「未実施」「一部実施」「完了」に分類する。
+
+- 案件名、テーマ名、slug、text domain の置換
+- 静的資産の `assets/` へのコピー
+- 共通ヘッダーとフッターの移植
+- トップページ本文の移植
+- 下層ページテンプレートの作成
+- ページ別 CSS / JavaScript の enqueue
+- 静的リンクの WordPress URL 化
+- メニュー化
+- ACF / CPT 化
+- 初期ページ、メニュー、デモデータの投入
+- ローカル表示確認
+- 本番反映設定
+
+一部実施済みの場合は、既存実装の意図と差分を確認して不足分だけを補う。完成済みの工程を別方式で作り直さない。
+
+## 変換計画
+
+編集前にページ対応表を作る。
+
+| 静的 HTML | WordPress 側 | 本文パーツ | ページ別 CSS | 備考 |
+| --- | --- | --- | --- | --- |
+| `index.html` | `front-page.php` または `page-templates/top.php` | `template-parts/front-page-content.php` 以下 | 対応する CSS | トップ |
+| 下層 HTML | `page-templates/<slug>.php` | `template-parts/<slug>-page-content.php` 以下 | 対応する CSS | 固定ページ |
+
+表には全ページを含め、slug、テンプレート名、ナビゲーション表示名も確定する。
+
+## 推奨実装順
+
+1. 作業先の案件用プレースホルダーが未置換なら、`README.md` と `docs/theme.example.md` に従って置換する。
+2. 移植元の `css/`、`js/`、`images/`、`img/` など必要資産を、構造を保って作業先の `assets/` へコピーする。
+3. 参照されていない管理画面用画像や不要な生成物は、参照調査なしに全コピーしない。
+4. 共通表示ヘッダーを `template-parts/site-header.php` へ移植する。
+5. 共通表示フッターを `template-parts/site-footer.php` へ移植する。
+6. トップ本文を `front-page-content.php` と `template-parts/front/` 以下へ分割する。
+7. 下層ページごとに `page-templates/<slug>.php`、`<slug>-page-content.php`、`template-parts/<slug>/` を作る。
+8. `theme_is_custom_view()` と `theme_body_classes()` を全移植ページへ拡張する。
+9. CSS / JavaScript を `inc/enqueue.php` に集約し、共通とページ固有を条件分岐する。
+10. 画像、内部リンク、外部リンク、電話、アンカー、iframe を用途別に変換する。
+11. 必要なページとメニューの初期構築ツールを案件値へ調整する。
+12. 静的 HTML と WordPress 出力を比較し、構造と表示を確認する。
+13. 表示が安定してから、管理画面化が必要な項目だけを ACF / CPT / `wp_nav_menu()` へ移す。
+
+## HTML の切り分け
+
+- `<html>`、`<head>`、`<body>` は本文パーツへコピーしない。
+- 静的 `<header id="global_header">` は `site-header.php` の候補。
+- 静的 `<footer id="global_footer">` は `site-footer.php` の候補。
+- `#contents_wrap` 以下は各 `*-page-content.php` の候補。
+- 複数ページで完全一致する本文ブロックだけを共通テンプレートパーツにする。
+- ページ固有のまとまりは `template-parts/<slug>/` へ置く。
+- 既存 JS の selector に使われている空要素、ID、class は、参照確認前に削除しない。
+- 静的 HTML の不正な入れ子や重複 ID は、まず再現し、表示確認後に影響を調べて直す。
+
+## アセット移植
+
+- 移植元のディレクトリ構造を極力保ち、機械的な参照変換を可能にする。
+- HTML の画像は `theme_source_uri()` または既存の画像 helper を使い、`esc_url()` する。
+- CSS 内の相対 `url()` は、CSS の配置先を変えると壊れるため必ず確認する。
+- JavaScript 内の相対パスも検索する。
+- ファイル名の大文字小文字を変えない。
+- `img/` と `images/` のように複数ルートがある場合は、統合による衝突を避け、必要なら両方を `assets/` 下へ保持する。
+- HTML が参照するファイルの存在確認を行い、元から欠損している参照と移植漏れを区別する。
+- 静的 HTML 自体を保存用としてテーマへコピーするのは、ユーザーが求める場合か、比較用成果物として明確な用途がある場合だけにする。
 
 ## enqueue 設計
 
-- 既存テーマの通常アセットと、移植ページ専用アセットを同じ条件で読み込まない。
-- 移植ページ用の CSS/JS は `is_page_template()` などで明確に閉じ込める。
-- 静的 HTML の `<script>` 順序をそのまま `wp_enqueue_script()` の依存関係に置き換える。
-- WordPress 同梱 jQuery を使う場合は、`jquery` handle に依存させる。
-- 静的サイト側が `$` を直接使う場合、移植ページだけに `$` 互換を追加する。
-- 依存配列には未登録 handle を書かない。コメントアウトした script を依存として残さない。
-- footer テンプレートに script を直書きしない。直書きと enqueue が混ざると二重読み込みや順序崩れが起きる。
-- 外部 CDN はバージョンを明示し、ローカル JS が必要とする順序で依存関係を組む。
-- `wp_footer()` は必ず残す。`wp_footer()` がないと enqueue した footer script が出力されない。
+- `inc/enqueue.php` の既存関数を拡張し、別の enqueue 系統を重複作成しない。
+- 共通 CSS、ページ別 CSS、共通 JavaScript、ページ別 JavaScriptを分類する。
+- 静的 HTML の読み込み順を記録し、WordPress の依存配列へ置き換える。
+- ページ固有アセットは `is_front_page()` / `is_page_template()` などで限定する。
+- 依存配列には、登録または enqueue される handle だけを書く。
+- handle は `theme-` + kebab-case とする。
+- ローカル資産の version は既存の `theme_asset_version()` を使う。
+- WordPress 同梱 jQuery を優先し、外部 jQuery と二重読み込みしない。
+- `$` グローバルが必要なら、対象ページ群に限定して既存方式の互換処理を使う。
+- footer や本文へ script を直書きせず、原則 enqueue する。
+- `async`、`defer`、inline script が順序に影響する場合は、その属性と実行位置を維持する実装を選ぶ。
+- 実際に使われていない plugin や CDN は、HTML に記載されているだけで無条件に移植しない。JS / DOM / CSS の参照を確認する。
+- Google Analytics などの計測コードは、ID と運用要件を確認し、開発環境で意図せず送信しない。
+
+## URL とナビゲーション
+
+- `index.html` は `home_url( '/' )` へ変換する。
+- 下層の `*.html` は、確定した固定ページ URL、`get_permalink()`、専用 URL helper、または `wp_nav_menu()` へ変換する。
+- `#anchor`、`tel:`、`mailto:`、外部 URL は静的ページリンクと区別する。
+- 未確定リンクは勝手に公開 URL を推測せず、ダミーであることを記録する。
+- `target="_blank"` の外部リンクには `rel="noopener noreferrer"` を付ける。
+- 共通ナビゲーションは最終的に `wp_nav_menu()` を優先するが、初期再現時は固定 HTML を保ってもよい。
+- メニュー化する場合は、既存 `primary` / `footer` location と fallback を再利用する。
+- ナビゲーションの表示名、順序、現在ページ class、スマートフォンメニューの selector を維持する。
+
+## 管理画面化
+
+- 静的 HTML の全要素を最初から ACF 化しない。まず固定テンプレートで表示を安定させる。
+- ACF は `inc/acf-pages.php`、値取得と出力は `inc/template-tags.php` に集約する。
+- ACF 無効時は投稿メタへ fallback し、fatal error を起こさない。
+- ACF key は `group_pc_*` / `field_pc_*` または案件で確定した固定接頭辞を使い、公開後に変更しない。
+- text、textarea、URL、画像、WYSIWYG は既存 helper とエスケープ方式を再利用する。
+- 編集頻度の高い単体文言、画像、CTA は ACF の候補。
+- 投稿、事例、商品、メニュー、FAQ など増減・並び替えが必要な一覧は CPT を検討する。
+- 静的な SNS 埋め込み一覧は、更新方法を確認してから CPT、外部 API、埋め込み、固定 HTML のいずれかを選ぶ。
+- 初期データ投入は既存内容を上書きせず、未設定値だけを補完する。
+
+## セキュリティと出力
+
+- 通常テキストは `esc_html()` または `theme_text()`。
+- 属性値は `esc_attr()`。
+- URL は `esc_url()`。
+- 改行テキストは既存の `theme_lines()`。
+- 画像は既存の `theme_image()` または用途に合う WordPress 画像 API。
+- 許可 HTML は `wp_kses()` または `theme_rich()`。
+- iframe は許可ドメインと属性を限定して出力する。
+- 管理画面値、投稿メタ、URL パラメータを未エスケープで出力しない。
+- 外部 script、古いライブラリ、追跡コードは、必要性とリスクを確認してから導入する。
 
 ## 既存テーマとの干渉確認
 
-- 既存テーマの body class 追加処理を確認する。
-- `visibility: hidden`、初期ローディング、ページ遷移 overlay、scroll lock など、JS が解除する前提の CSS がないか確認する。
-- 移植ページで共通 JS を使わない場合は、対応する pending class や overlay も出さない。
-- 共通アセットを除外する場合でも、他ページの挙動を変えないように条件分岐を限定する。
-- `body_class()` の出力を `curl` やブラウザ DOM で確認し、本文を隠す class が残っていないか見る。
-- `noscript` だけで表示される状態に頼らず、JavaScript 有効時でも初期表示が成立するようにする。
+- `body_class()` の追加 class と CSS selector を確認する。
+- `visibility: hidden`、ローディング、overlay、scroll lock、pending class がないか確認する。
+- 共通 JS を除外する場合、JS が解除する前提の class や要素も対象ページから除外する。
+- `theme_is_custom_view()` の追加漏れでアセットが読み込まれない状態を防ぐ。
+- `theme_body_classes()` が全下層ページをトップ扱いしないよう、ページ別 class を設計する。
+- `page.php` や `index.php` など、移植対象外ページの挙動を壊さない。
 
-## リンクと管理画面化の判断
+## 検証
 
-- リンク先が未確定なら、まず全リンクを `href="#"` のダミーとして統一し、公開前の置換対象として記録する。
-- ナビゲーションを編集可能にする段階では、`wp_nav_menu()` とメニュー位置へ置き換える。
-- ページ全体の静的本文を最初からすべて ACF 化しない。移植直後は固定テンプレートで構造を安定させる。
-- 編集頻度の高い単体文言、画像、CTA は ACF の候補にする。
-- スタッフ、FAQ、料金表、事例、カード一覧など、編集者が増減・並び替えする項目は CPT の候補にする。
-- ACF/CPT 化する場合は、fallback、初期値、エスケープ、ACF 無効時の挙動までまとめて実装する。
+### 静的比較
 
-## WordPress 化レビュー観点
+- 全ページについて、header、本文、footer、CSS、JavaScript、画像、リンクの対応を確認する。
+- 元 HTML に存在する参照先が、移植先にも存在するか機械的に確認する。
+- 共通部品の差分が意図したページ固有差分だけか確認する。
 
-- CSS と JavaScript は、原則として `wp_enqueue_style()` / `wp_enqueue_script()` に集約する。
-- footer テンプレートへ `<script>` を直書きする場合は、enqueue と二重読み込みになっていないか必ず確認する。
-- enqueue の依存配列には、登録または同時 enqueue されている handle だけを書く。
-- ページ固有アセットは `is_page_template()` などで対象ページに限定し、他ページへ漏らさない。
-- 静的 HTML の `/index.html`、`/service.html` のようなリンクは、公開前に `home_url()`、`get_permalink()`、`wp_nav_menu()`、または専用 helper へ置き換える。
-- `target="_blank"` を残す場合は、外部リンクに `rel="noopener noreferrer"` を付ける。
-- 画像やアセット URI は helper 経由にし、出力時は `esc_url()` する。
-- ACF や投稿メタを扱う場合は、値の種類に応じて `esc_html()`、`esc_attr()`、`esc_url()`、`wp_kses()` を使い分ける。
-- 静的 HTML 由来の無効なタグ、重複 ID、不要コメント、空の style 属性は、見た目確認後に整理する。
-- ヘッダーやフッターのナビゲーションは、固定 HTML で残すか、WordPress メニューへ置き換えるかを明示する。
-- 変換完了の判断は、見た目の一致だけでなく、依存読み込み、URL、テンプレート責務、エスケープ、管理画面での編集方針まで含める。
-
-## 検証チェックリスト
+### HTTP / DOM
 
 - `curl -sS -D - <url>` で HTTP `200` を確認する。
-- HTML に対象テンプレートの本文、専用 body class、必要 CSS/JS が出ていることを確認する。
-- HTML に不要な pending class、overlay、二重 script、未確定リンクが意図せず残っていないことを確認する。
-- ブラウザで初期表示が空白にならないことを確認する。
-- ブラウザコンソールで `$ is not defined`、未定義 plugin、未読込 CDN、404 asset がないことを確認する。
-- `php -l` を変更した PHP ファイルに実行する。
-- `git diff --check` を実行する。
-- プロジェクトに PHPCS がある場合は `composer run phpcs` を実行する。`composer` がない場合は未実行理由を報告する。
+- HTML に `wp_head()` / `wp_footer()` の出力があることを確認する。
+- 対象本文、body class、ページ別 CSS / JavaScript が出力されることを確認する。
+- 二重 script、404 asset、不要な pending class、意図しないダミーリンクがないことを確認する。
+
+### ブラウザ
+
+- プロジェクトで指定されたブラウザ手段を使い、puppeteer は使わない。
+- デスクトップとモバイル幅で、初期表示、画像、メニュー、アンカー、スライダー、モーダル、スクロール、iframe を確認する。
+- コンソールの JavaScript error とネットワークの 404 を確認する。
+- JavaScript 有効時と、必要に応じて無効時の初期表示を確認する。
+
+### コード
+
+```bash
+find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l
+composer run phpcs
+rtk git diff --check
+```
+
+- リポジトリのテストを実行する。
+- テスト対象がある場合は最小カバレッジ 80% を維持する。
+- Composer、WordPress、ローカル URL などがなく実行できない検証は、理由と未確認範囲を報告する。
+
+## 完了条件
+
+- 対象となる全静的ページに WordPress 側の対応先がある。
+- 共通 header / footer とページ固有本文の責務が分離されている。
+- CSS / JavaScript が必要なページだけへ正しい順序で読み込まれる。
+- 画像、内部リンク、外部リンク、電話、アンカー、iframe が用途に合う形で動作する。
+- `wp_head()`、`wp_footer()`、`body_class()`、`wp_body_open()` が保たれている。
+- ACF が無効でも fatal error にならない。
+- PHP lint、PHPCS、diff check、既存テスト、ブラウザ確認の結果が記録されている。
+- 移植元と無関係な作業先ファイルを変更していない。
+- 移植元ディレクトリを変更していない。
+
+## やってはいけないこと
+
+- 移植元 HTML を直接編集して辻褄を合わせる。
+- 現行テーマに既存の header/footer/helper/enqueue があるのに、並行する独自方式を追加する。
+- 全ページを一つの巨大テンプレートへ貼り付ける。
+- すでに完了している資産コピーやテンプレート化を無条件にやり直す。
+- 静的リンクを根拠なく仮 slug へ置換する。
+- ACF の存在を前提に直接 `get_field()` の結果を出力する。
+- CSS 内 `url()` や JavaScript 内の相対参照を確認せず、資産ディレクトリを再編する。
+- 古い外部ライブラリや計測コードを必要性の確認なしにそのまま有効化する。
+- 表示確認だけで完了とし、lint、PHPCS、リンク、404、コンソール error を確認しない。

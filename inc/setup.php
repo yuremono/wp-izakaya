@@ -42,46 +42,26 @@ add_action( 'after_setup_theme', 'theme_setup' );
 /**
  * Show an admin notice when ACF is inactive.
  */
-function theme_quests_acf_admin_notice(): void {
+function theme_acf_admin_notice(): void {
 	if ( function_exists( 'acf_add_local_field_group' ) || ! current_user_can( 'activate_plugins' ) ) {
 		return;
 	}
 	?>
 	<div class="notice notice-warning">
-		<p><?php echo esc_html__( 'Advanced Custom Fields が有効化されていません。Quests テーマの編集項目を利用するには ACF を有効化してください。', THEME_GETTEXT_DOMAIN ); ?></p>
+		<p><?php echo esc_html__( 'Advanced Custom Fields が有効化されていません。テーマの編集項目を利用するには ACF を有効化してください。', THEME_GETTEXT_DOMAIN ); ?></p>
 	</div>
 	<?php
 }
-add_action( 'admin_notices', 'theme_quests_acf_admin_notice' );
+add_action( 'admin_notices', 'theme_acf_admin_notice' );
 
 /**
  * Fallback navigation used until a menu is assigned in the admin screen.
  */
-function theme_quests_primary_menu_fallback(): void {
+function theme_primary_menu_fallback(): void {
 	$items = array(
 		array(
-			'label' => 'home',
+			'label' => 'Home',
 			'url'   => home_url( '/' ),
-		),
-		array(
-			'label' => 'Service',
-			'url'   => home_url( '/service/' ),
-		),
-		array(
-			'label' => 'Staff',
-			'url'   => '#',
-		),
-		array(
-			'label' => 'Recruit',
-			'url'   => '#',
-		),
-		array(
-			'label' => 'Instagram',
-			'url'   => '#',
-		),
-		array(
-			'label' => 'Contact',
-			'url'   => '#',
 		),
 	);
 	?>
