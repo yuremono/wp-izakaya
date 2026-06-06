@@ -34,7 +34,7 @@ $(function () { //ページ毎処理
     let pageT = location.pathname.slice(1).replace(".html", "");
     let param = location.search;
     let body = $('body');
-    let sec = $('section:first-child');
+    let sec = $('main:first-child');
     if (pageT.includes("info")) {
         body.addClass("info");
         // $('.h').addClass('is-scroll');
@@ -65,7 +65,7 @@ $(function () { //要素処理
     $(':is(.title1,[class*=hbb]) :is(h1,h2,h3,p)>span:not(.translate)').addClass('sub');
 
     $('#side,#col_side1,.dis,.disnone').remove();
-    $('#main>#col_main,#col_main>section').unwrap();
+    $('#main>#col_main,#col_main>main').unwrap();
 
     $('#contents .mv_slide ul>li').each(function (i) {
         if (!$(this).find('article').length) {
@@ -88,7 +88,7 @@ $(function () { //要素処理
         newel = $(this).find('article').addClass("art");
     });
 
-    $('section div:not(.picBtn,.twopicBtn)>.box').each(function (i) {//ul構造の調整
+    $('main div:not(.picBtn,.twopicBtn)>.box').each(function (i) {//ul構造の調整
         if (!$(this).find('article').length) {
             $(this).wrapInner('<article>');
         }
