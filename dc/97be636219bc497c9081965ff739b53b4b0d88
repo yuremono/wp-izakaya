@@ -1,0 +1,126 @@
+template-parts/site-header.php
+  s_4e8772a18aef8d::t_b1a56ab8aedf3e 34-35
+  s_4e8772a18aef8d::t_82d9a232c15dc7 5
+assets/images/common2/yajirusimigi.png
+  s_4e8772a18aef8d::t_3cbd1aff01fad0 8,11-12,16,136,140,169
+  s_4e8772a18aef8d::t_ee8c3449e905d2 77,144
+assets/images/home/arrow07.png
+  s_4e8772a18aef8d::t_3cbd1aff01fad0 8,11-12,16,136,140,169
+  s_4e8772a18aef8d::t_ee8c3449e905d2 77,144
+assets/images/home/maruS.png
+  s_4e8772a18aef8d::t_ee8c3449e905d2 77,144
+  s_4e8772a18aef8d::t_3cbd1aff01fad0 8,11-12,16,136,140,169
+page-templates/otsumami.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 6
+template-parts/genshu-page-content.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 5,51,71
+  s_4e8772a18aef8d::t_8880c3fedebb6d 61
+  s_4e8772a18aef8d::t_d47c3b0f261adc 49-50,59-60,69-70,82,86,90,94,103
+page-templates/insta.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 6
+template-parts/shochu-page-content.php
+  s_4e8772a18aef8d::t_8880c3fedebb6d 128
+  s_4e8772a18aef8d::t_82d9a232c15dc7 5,92,299
+  s_4e8772a18aef8d::t_b1a56ab8aedf3e 401
+  s_4e8772a18aef8d::t_d47c3b0f261adc 96,100,104,110,114,118,122,132,136,140,184,188,192,198,202,206,250,254,258,264,268,272,316,320,324,330,334,338,379,383,387,391
+assets/images/home/icon071.png
+  s_4e8772a18aef8d::t_3cbd1aff01fad0 8,11-12,16,136,140,169
+  s_4e8772a18aef8d::t_ee8c3449e905d2 77,144
+inc/template-tags.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 30,35,40
+.codex/skills/wp-deploy/references/deploy.md
+  s_4e8772a18aef8d::t_8880c3fedebb6d 10,41
+page-templates/other.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 6
+assets/images/home/0102.png
+  s_4e8772a18aef8d::t_3cbd1aff01fad0 8,11-12,16,136,140,169
+  s_4e8772a18aef8d::t_ee8c3449e905d2 77,144
+template-parts/other-page-content.php
+  s_4e8772a18aef8d::t_d47c3b0f261adc 60,69
+  s_4e8772a18aef8d::t_82d9a232c15dc7 5
+.codex/skills/wp-deploy/SKILL.md
+  s_4e8772a18aef8d::t_8880c3fedebb6d 18,32,49,60
+assets/js/function.js
+  s_4e8772a18aef8d::t_82d9a232c15dc7 9,55
+page-templates/info.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 6
+functions.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 14,20
+template-parts/front-page-content.php
+  s_4e8772a18aef8d::t_e7e034021b9f1f 46-51
+  s_4e8772a18aef8d::t_8880c3fedebb6d 408,446,521
+  s_4e8772a18aef8d::t_d47c3b0f261adc 287,326,370,403,484,516
+  s_4e8772a18aef8d::t_82d9a232c15dc7 5,278-281,292,317-318,356,375,433-434,463-465,506-508
+  h_53dad1e32c3c71 22,26,32-35,40-45,56,70,76,81,88,93,105,109,114-115,122-124,129-131,136,141-142,149-151,156-158,162-163,169-171,174-206,210-212,215-261,265-267,277,285,291,296-297,304-306,316,324,330,335-336,343-345,355,366-368,374,379-380,387-389,401,407,412-413,420-422,432,439,443-445,455-457,470,474-482,488,497-499,514,520,525-526,535
+template-parts/otsumami-page-content.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 5,86-88
+  s_4e8772a18aef8d::t_b1a56ab8aedf3e 170
+template-parts/site-footer.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 5,20,53
+  h_53dad1e32c3c71 14,18,24,40,44-50
+  s_4e8772a18aef8d::t_e7e034021b9f1f 28
+assets/images/home/icon072.png
+  s_4e8772a18aef8d::t_3cbd1aff01fad0 8,11-12,16,136,140,169
+  s_4e8772a18aef8d::t_ee8c3449e905d2 77,144
+assets/images/home/mail.png
+  s_4e8772a18aef8d::t_3cbd1aff01fad0 8,11-12,16,136,140,169
+  s_4e8772a18aef8d::t_ee8c3449e905d2 77,144
+assets/images/home/maruL.png
+  s_4e8772a18aef8d::t_3cbd1aff01fad0 8,11-12,16,136,140,169
+  s_4e8772a18aef8d::t_ee8c3449e905d2 77,144
+tools-domain/bootstrap-site.example.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 15
+page-templates/genshu.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 6
+assets/images/home/Gframe.png
+  s_4e8772a18aef8d::t_3cbd1aff01fad0 8,11-12,16,136,140,169
+  s_4e8772a18aef8d::t_ee8c3449e905d2 77,144
+.codex/skills/anonymize/SKILL.md
+  s_4e8772a18aef8d::t_aadde6806a99f3 1-2,4-7
+  h_53dad1e32c3c71 17,36,53-64,87
+  s_4e8772a18aef8d::t_73672d1f318b5e 3,8-16,18-35,37-52,65-86,88-90
+inc/enqueue.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 5
+style.css
+  s_4e8772a18aef8d::t_82d9a232c15dc7 2,5,12
+  s_4e8772a18aef8d::t_8880c3fedebb6d 3-4
+page-templates/shochu.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 6
+assets/images/home/Scroll.png
+  s_4e8772a18aef8d::t_ee8c3449e905d2 77,144
+  s_4e8772a18aef8d::t_3cbd1aff01fad0 8,11-12,16,136,140,169
+template-parts/insta-page-content.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 5,30
+  s_4e8772a18aef8d::t_b1a56ab8aedf3e 38,80,119,137,177,217,262,296,332,375,412,453
+  h_53dad1e32c3c71 50,52,62,66,68,72,92,101,105,107,111,149,151,154-155,159,163,165,169,189,192-194,199,203,205,209,229,231-232,244,248,250,254,274,278,282,284,288,308,310-312,317,321,323,343-345,349,361,365,367,387,390,394,398,400,404-405,424,436,440,442,445,465-467,469,473,476,480,482,487,490,493,496
+tools/deploy.sh
+  s_4e8772a18aef8d::t_8880c3fedebb6d 10
+inc/acf-pages.php
+  s_4e8772a18aef8d::t_82d9a232c15dc7 8
+template-parts/info-page-content.php
+  s_4e8772a18aef8d::t_b1a56ab8aedf3e 115
+  h_53dad1e32c3c71 61
+  s_4e8772a18aef8d::t_82d9a232c15dc7 5,30,39,43,90,95
+  s_4e8772a18aef8d::t_e7e034021b9f1f 48,100
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "dc97be636219bc497c9081965ff739b53b4b0d88",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_4e8772a18aef8d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e9bf3-d2fc-79c3-8fc6-bfb29fb0521f",
+        "model": "gpt-5.5"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
