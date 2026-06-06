@@ -1,0 +1,41 @@
+CHECKLIST.md
+  h_53dad1e32c3c71 30
+  s_b986bd1a7c2562::t_f9c5df41045e6b 18-21,60-65
+template-parts/service/plan.php
+  s_b986bd1a7c2562::t_b95509cd70c013 42-69
+inc/enqueue.php
+  s_b986bd1a7c2562::t_f9c5df41045e6b 56,174
+inc/acf-quests-pages.php
+  s_b986bd1a7c2562::t_288506ef537ca6 34-43,180-185,188-195
+inc/quests-static.php
+  s_b986bd1a7c2562::t_b95509cd70c013 244
+  s_b986bd1a7c2562::t_73fc59377a16c6 235-243,245-284
+template-parts/service-page-content.php
+  s_b986bd1a7c2562::t_f6bc303f49d618 19
+  s_b986bd1a7c2562::t_73fc59377a16c6 44
+README.md
+  s_b986bd1a7c2562::t_f9c5df41045e6b 60-63,79-93
+template-parts/front-page-content.php
+  s_b986bd1a7c2562::t_f6bc303f49d618 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "de5e65807c1846ecc852a0b88c7241a73d4c54c9",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_b986bd1a7c2562": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e9b63-ad4f-7a62-a098-2faedc2d5713",
+        "model": "gpt-5.5"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
