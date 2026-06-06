@@ -51,16 +51,9 @@ function theme_enqueue_assets(): void {
 		);
 
 		wp_enqueue_style(
-			'theme-quests-scroll-hint',
-			get_template_directory_uri() . '/assets/js/scroll-hint/scroll-hint.css',
-			array( 'theme-quests-magnific-popup' ),
-			theme_asset_version( 'assets/js/scroll-hint/scroll-hint.css' )
-		);
-
-		wp_enqueue_style(
 			'theme-quests-slick-theme',
 			get_template_directory_uri() . '/assets/js/slick/slick-theme.css',
-			array( 'theme-quests-scroll-hint' ),
+			array( 'theme-quests-magnific-popup' ),
 			theme_asset_version( 'assets/js/slick/slick-theme.css' )
 		);
 
@@ -161,22 +154,6 @@ function theme_enqueue_assets(): void {
 		);
 
 		wp_enqueue_script(
-			'theme-quests-scroll-hint',
-			get_template_directory_uri() . '/assets/js/scroll-hint/scroll-hint.min.js',
-			array(),
-			theme_asset_version( 'assets/js/scroll-hint/scroll-hint.min.js' ),
-			true
-		);
-
-		wp_enqueue_script(
-			'theme-quests-flipsnap',
-			get_template_directory_uri() . '/assets/js/flipsnap.min.js',
-			array(),
-			theme_asset_version( 'assets/js/flipsnap.min.js' ),
-			true
-		);
-
-		wp_enqueue_script(
 			'theme-quests-function',
 			get_template_directory_uri() . '/assets/js/function.js',
 			array(
@@ -186,8 +163,6 @@ function theme_enqueue_assets(): void {
 				'theme-quests-gsap-scrolltrigger',
 				'theme-quests-slick',
 				'theme-quests-magnific-popup',
-				'theme-quests-scroll-hint',
-				'theme-quests-flipsnap',
 			),
 			theme_asset_version( 'assets/js/function.js' ),
 			true
@@ -196,7 +171,7 @@ function theme_enqueue_assets(): void {
 		wp_enqueue_script(
 			'theme-quests-bxi',
 			get_template_directory_uri() . '/assets/js/bxi.js',
-			array( 'jquery', 'theme-quests-function', 'theme-quests-flipsnap' ),
+			array( 'jquery', 'theme-quests-function' ),
 			theme_asset_version( 'assets/js/bxi.js' ),
 			true
 		);

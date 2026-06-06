@@ -57,7 +57,10 @@ ACFフィールドグループ:
   - ヒーロー画像
   - Point 周辺画像 4枚
   - CTA 画像
-  - ヒーロー、About、Point、料金、エリア、Flow、CTA の主要テキスト
+  - ヒーロー、長文、料金、エリア、Flow、CTA の主要テキスト
+  - 料金表 3 行、対応エリア表 4 行を HTML 不要の固定数フィールドで編集
+
+旧バージョンで料金表・対応エリア表の HTML が保存されている場合は、その内容を維持します。新しい固定数フィールドを保存すると、以後は固定数フィールドの値を表示します。
 
 画像フィールドの代替テキストは、原則としてメディアライブラリの「代替テキスト」を使用します。未設定時はテーマ側の説明文を fallback として出力します。
 
@@ -72,6 +75,22 @@ ACFフィールドグループ:
 ## テーマ内CSS
 
 `style.css` は WordPress テーマヘッダー専用です。実際の表示CSSは [assets/css/](./assets/css/) に配置し、[inc/enqueue.php](./inc/enqueue.php) から読み込んでいます。
+
+## フロントエンドライブラリ
+
+| ライブラリ | 用途 | 読み込み |
+| --- | --- | --- |
+| jQuery | 既存 UI 初期化の基盤 | 使用 |
+| Slick | メインビジュアル・SNS スライダー | 使用 |
+| Lenis | スムーススクロール | 使用 |
+| GSAP / ScrollTrigger | パララックス・スクロール演出 | 使用 |
+| Magnific Popup | `.popup` ギャラリー初期化 | 使用 |
+| YakuHanJP / Google Fonts | 和文約物・Lato・Sawarabi Gothic | 使用 |
+| Line Awesome | CTA・ナビゲーションアイコン | 使用 |
+| ScrollHint | 初期化箇所なし | 読み込み停止 |
+| Flipsnap | 参照箇所なし | 読み込み停止 |
+
+`assets/js/scroll-hint/` と `assets/js/flipsnap.min.js` は元静的サイトとの差分確認用に残していますが、`inc/enqueue.php` からは読み込みません。
 
 ## ローカル運用
 

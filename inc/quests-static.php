@@ -232,3 +232,53 @@ if ( ! function_exists( 'theme_quests_rich' ) ) {
 		echo wp_kses( (string) theme_quests_meta( $field_name, $fallback ), theme_quests_allowed_html() );
 	}
 }
+
+if ( ! function_exists( 'theme_quests_table' ) ) {
+	/**
+	 * Echo a fixed-row table while preserving legacy HTML until new fields are saved.
+	 *
+	 * @param string                         $field_prefix Prefix for row field names.
+	 * @param array<int, array{0:string,1:string}> $fallback_rows Default rows.
+	 * @param string                         $legacy_field Legacy HTML field name.
+	 */
+	function theme_quests_table( string $field_prefix, array $fallback_rows, string $legacy_field ): void {
+		$post_id        = theme_quests_content_post_id();
+		$has_saved_rows = false;
+
+		foreach ( array_keys( $fallback_rows ) as $index ) {
+			$row_number = $index + 1;
+			if (
+				'' !== (string) get_post_meta( $post_id, "{$field_prefix}_{$row_number}_label", true ) ||
+				'' !== (string) get_post_meta( $post_id, "{$field_prefix}_{$row_number}_value", true )
+			) {
+				$has_saved_rows = true;
+				break;
+			}
+		}
+
+		$legacy_value = (string) get_post_meta( $post_id, $legacy_field, true );
+		if ( ! $has_saved_rows && '' !== $legacy_value ) {
+			echo wp_kses( $legacy_value, theme_quests_allowed_html() );
+			return;
+		}
+
+		?>
+		<table>
+			<?php foreach ( $fallback_rows as $index => $fallback_row ) : ?>
+				<?php
+				$row_number = $index + 1;
+				$label      = (string) theme_quests_meta( "{$field_prefix}_{$row_number}_label", $fallback_row[0] );
+				$value      = (string) theme_quests_meta( "{$field_prefix}_{$row_number}_value", $fallback_row[1] );
+				if ( '' === $label && '' === $value ) {
+					continue;
+				}
+				?>
+				<tr>
+					<td><div><?php echo esc_html( $label ); ?></div></td>
+					<td><div><?php echo esc_html( $value ); ?></div></td>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+		<?php
+	}
+}

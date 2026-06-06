@@ -31,6 +31,16 @@ function theme_register_acf_quests_page_groups(): void {
 			'default_value' => $default_value,
 		);
 	};
+	$table_field = static function ( string $key, string $label, string $name, string $default_value, string $instructions ) use ( $text_domain ): array {
+		return array(
+			'key'           => $key,
+			'label'         => __( $label, $text_domain ),
+			'name'          => $name,
+			'type'          => 'text',
+			'instructions'  => __( $instructions, $text_domain ),
+			'default_value' => $default_value,
+		);
+	};
 	$url_field   = static function ( string $key, string $label, string $name, string $default_value, string $instructions ) use ( $text_domain ): array {
 		return array(
 			'key'           => $key,
@@ -123,7 +133,6 @@ function theme_register_acf_quests_page_groups(): void {
 				$field( 'field_pc_quests_education_card_kicker', 'Education カードラベル', 'quests_education_card_kicker', 'Education', 1 ),
 				$field( 'field_pc_quests_education_card_heading', 'Education カード見出し', 'quests_education_card_heading', '文字文字', 1 ),
 				$field( 'field_pc_quests_education_card_body', 'Education カード本文', 'quests_education_card_body', '仮の日本語テキストをここに配置しています。本文の量や折り返しを確認するための文章です。', 4 ),
-				
 				$field( 'field_pc_quests_life_1_heading', 'LIFE 1 見出し', 'quests_life_1_heading', '文字のある文字', 1 ),
 				$field( 'field_pc_quests_life_1_body', 'LIFE 1 本文', 'quests_life_1_body', 'Sample text remains here for layout checking only. The sentence length is adjusted to keep the visual rhythm close to the original.', 4 ),
 				$field( 'field_pc_quests_life_2_kicker', 'LIFE 2 ラベル', 'quests_life_2_kicker', 'LIFE', 1 ),
@@ -156,19 +165,7 @@ function theme_register_acf_quests_page_groups(): void {
 				$field( 'field_pc_quests_service_hero_label', 'ヒーロー英字', 'quests_service_hero_label', 'Service', 1 ),
 				$field( 'field_pc_quests_service_hero_small', 'ヒーロー小見出し', 'quests_service_hero_small', '文字文字紹介', 1 ),
 				$image_field( 'field_pc_quests_service_hero_image', 'ヒーロー画像', 'quests_service_hero_image', 'サービスページのメインビジュアル画像です。' ),
-				
-				$field( 'field_pc_quests_service_about_heading', 'About 見出し', 'quests_service_about_heading', '文字と「暮らす」', 1 ),
-				$field( 'field_pc_quests_service_about_body', 'About 本文', 'quests_service_about_body', "これは表示確認用の仮文章です。\n文字数と改行の流れを保つために配置した日本語の文章で、\n実際の説明内容として読むことは想定していません。", 8 ),
 				$tab( 'field_pc_quests_service_tab_points', '説明・ポイント' ),
-				
-				$field( 'field_pc_quests_service_intro_heading', '説明見出し', 'quests_service_intro_heading', 'とは', 1 ),
-				$field( 'field_pc_quests_service_intro_body', '説明本文', 'quests_service_intro_body', "「サンプル\nテキスト」は表示確認用の仮文章です。文章量と改行位置が大きく変わらないように調整しています。", 3 ),
-				
-				$field( 'field_pc_quests_service_point_1_heading', 'Point 1 見出し', 'quests_service_point_1_heading', '文字しか話さない環境', 1 ),
-				$field( 'field_pc_quests_service_point_1_body', 'Point 1 本文', 'quests_service_point_1_body', 'ここには日本語のダミーテキストを配置しています。文章の長さ、行の折り返し、見出し下の余白を確認するための内容です。', 4 ),
-				
-				$field( 'field_pc_quests_service_point_2_heading', 'Point 2 見出し', 'quests_service_point_2_heading', '文字文字以外の充実したカリキュラム', 1 ),
-				$field( 'field_pc_quests_service_point_2_body', 'Point 2 本文', 'quests_service_point_2_body', 'Sample text is used here only to keep the visual length close to the original.', 4 ),
 				$field( 'field_pc_quests_service_long_u', '長文ブロック強調ラベル', 'quests_service_long_u', "Samplex\nTextxx", 2 ),
 				$field( 'field_pc_quests_service_long_heading', '長文ブロック見出し', 'quests_service_long_heading', 'アイウエオカキクケコとは？', 1 ),
 				$field( 'field_pc_quests_service_long_body', '長文ブロック本文', 'quests_service_long_body', "ここには日本語の仮文章を配置し、行の高さと余白を確認します。\n\n対象や内容を示す実文ではなく、文字量を保つための文章です。", 8 ),
@@ -180,10 +177,22 @@ function theme_register_acf_quests_page_groups(): void {
 				$field( 'field_pc_quests_service_plan_heading', 'PLAN 見出し', 'quests_service_plan_heading', 'PLAN', 1 ),
 				$field( 'field_pc_quests_service_plan_time', '時間表記', 'quests_service_plan_time', '文字時間7：00～22：00', 1 ),
 				$field( 'field_pc_quests_service_price_heading', '料金表見出し', 'quests_service_price_heading', '文字一覧', 1 ),
-				$field( 'field_pc_quests_service_price_table', '料金表 HTML', 'quests_service_price_table', '<table><tr><td><div><span style="font-size:0.9em;">１チケット（7:00〜22:00） / １文字</span></div></td><td><div>0,000円</div></td></tr><tr><td><div>１Txt（9文字）</div></td><td><div><span style="font-size:0.9em;">00,000円</span></div></td></tr></table>', 6 ),
+				$table_field( 'field_pc_quests_service_price_1_label', '料金 1 項目', 'quests_service_price_1_label', '１チケット（7:00〜22:00） / １文字', '料金表1行目の左側です。' ),
+				$table_field( 'field_pc_quests_service_price_1_value', '料金 1 金額', 'quests_service_price_1_value', '0,000円', '料金表1行目の右側です。' ),
+				$table_field( 'field_pc_quests_service_price_2_label', '料金 2 項目', 'quests_service_price_2_label', '１Txt（9文字）', '料金表2行目の左側です。' ),
+				$table_field( 'field_pc_quests_service_price_2_value', '料金 2 金額', 'quests_service_price_2_value', '00,000円', '料金表2行目の右側です。' ),
+				$table_field( 'field_pc_quests_service_price_3_label', '料金 3 項目', 'quests_service_price_3_label', '文字同行（文字費・文字・文字費別）', '料金表3行目の左側です。不要な場合は左右とも空欄にします。' ),
+				$table_field( 'field_pc_quests_service_price_3_value', '料金 3 金額', 'quests_service_price_3_value', '文字列', '料金表3行目の右側です。' ),
 				$field( 'field_pc_quests_service_price_note', '料金注記', 'quests_service_price_note', '※表示文字は税込です', 1 ),
 				$field( 'field_pc_quests_service_area_heading', '対応エリア見出し', 'quests_service_area_heading', '対応文字列', 1 ),
-				$field( 'field_pc_quests_service_area_table', '対応エリア表 HTML', 'quests_service_area_table', '<table><tr><td><div>文字都</div></td><td><div>文字</div></td></tr><tr><td><div>文字文字</div></td><td><div>文字</div></td></tr></table>', 6 ),
+				$table_field( 'field_pc_quests_service_area_1_label', 'エリア 1 地域', 'quests_service_area_1_label', '文字都', '対応エリア表1行目の左側です。' ),
+				$table_field( 'field_pc_quests_service_area_1_value', 'エリア 1 内容', 'quests_service_area_1_value', '文字', '対応エリア表1行目の右側です。' ),
+				$table_field( 'field_pc_quests_service_area_2_label', 'エリア 2 地域', 'quests_service_area_2_label', '文字文字', '対応エリア表2行目の左側です。' ),
+				$table_field( 'field_pc_quests_service_area_2_value', 'エリア 2 内容', 'quests_service_area_2_value', '文字', '対応エリア表2行目の右側です。' ),
+				$table_field( 'field_pc_quests_service_area_3_label', 'エリア 3 地域', 'quests_service_area_3_label', '文字県', '対応エリア表3行目の左側です。不要な場合は左右とも空欄にします。' ),
+				$table_field( 'field_pc_quests_service_area_3_value', 'エリア 3 内容', 'quests_service_area_3_value', '文字', '対応エリア表3行目の右側です。' ),
+				$table_field( 'field_pc_quests_service_area_4_label', 'エリア 4 地域', 'quests_service_area_4_label', '文字県', '対応エリア表4行目の左側です。不要な場合は左右とも空欄にします。' ),
+				$table_field( 'field_pc_quests_service_area_4_value', 'エリア 4 内容', 'quests_service_area_4_value', '文字', '対応エリア表4行目の右側です。' ),
 				$field( 'field_pc_quests_service_flow_kicker', 'Flow ラベル', 'quests_service_flow_kicker', 'Flow', 1 ),
 				$field( 'field_pc_quests_service_flow_heading', 'Flow 見出し', 'quests_service_flow_heading', '文字までの流れ', 1 ),
 				$field( 'field_pc_quests_service_flow_1', 'Flow 1', 'quests_service_flow_1', '文字文字文字30分', 1 ),
