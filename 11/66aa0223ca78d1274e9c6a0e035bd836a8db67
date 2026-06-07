@@ -1,0 +1,44 @@
+template-parts/front-page-content.php
+  s_133f15f149c6da::t_0389f374f33d0b 10-11,14-26
+template-parts/front/otsumami-link.php
+  h_53dad1e32c3c71 16,18,22,25,30,34
+template-parts/front/shochu-features.php
+  h_53dad1e32c3c71 18-19,21,37,41,51
+template-parts/site-header.php
+  h_53dad1e32c3c71 17,22,24-25,40,42
+template-parts/site-footer.php
+  h_53dad1e32c3c71 26,37,50,53
+template-parts/front/other-link.php
+  h_53dad1e32c3c71 16,18,22,25,30,34
+template-parts/front/introduction.php
+  h_53dad1e32c3c71 15
+template-parts/front/news-feed.php
+  h_53dad1e32c3c71 32,35,42,50,52,58,72,75,82,84,89,95,109,112,126,129,136,144,150,164,167,174,182,188,202,205,212,223,225,231,245,248,257,263,277,280,287,294,300,312,315,325,329,332,335,337,343,354,357,369,375
+template-parts/front/news-link.php
+  h_53dad1e32c3c71 16
+assets/css/index_html.css
+  h_53dad1e32c3c71 3
+assets/css/common_style.css
+  h_53dad1e32c3c71 14-25,912,6530,14125
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "1166aa0223ca78d1274e9c6a0e035bd836a8db67",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_133f15f149c6da": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019e9dfa-edae-7d31-8b87-3a1c885681da",
+        "model": "gpt-5.4-mini"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
