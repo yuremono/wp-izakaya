@@ -1,0 +1,12 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "e60fa5235f64fccd874dbd729fd53e3c4224799e",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
