@@ -1,0 +1,47 @@
+inc/cpt.php
+  s_ad8223f6159e26::t_ecd48334d1085d 3,15,65,99,101-103
+  s_ad8223f6159e26::t_6b4131ee188e08 36,57,87,106
+inc/template-tags.php
+  s_ad8223f6159e26::t_7688ed3a29fea2 276,278,303,305-312,342,344,367,369-372,403,405-408,421,423-424,431,433-434,441,450,452-453
+  s_ad8223f6159e26::t_4eb116478bf760 3,15,17,25,45,64,66-67,87,89-90,100,102-103,113,115-116,126,128,136,138-139,166,168-170,182,184-187,195,211,213-215,233,235-236,250,252-253
+inc/INC.md
+  s_ad8223f6159e26::t_664b7027ea7f28 87-141
+  s_ad8223f6159e26::t_ecbe1bcf46db9f 158-179
+  s_ad8223f6159e26::t_13307bdca886d7 142-157
+  s_ad8223f6159e26::t_f09c425ac821d4 1-86
+inc/acf-pages.php
+  s_ad8223f6159e26::t_26ef3d0ae40098 266,274,279,287
+  s_ad8223f6159e26::t_2b4f8e537f8b37 22,65,111,165,226,236,247
+  s_ad8223f6159e26::t_8a0308dcc709c1 3,15,36,38-42,58
+deploy.sh
+  s_ad8223f6159e26::t_1d6967393affea 1-10
+DEPLOYMENT.md
+  s_ad8223f6159e26::t_1d6967393affea 19-23
+inc/setup.php
+  s_ad8223f6159e26::t_ecd48334d1085d 3,15,43,58
+inc/enqueue.php
+  s_ad8223f6159e26::t_ecd48334d1085d 3,15,30,37,82,120,128
+inc/helpers.php
+  s_ad8223f6159e26::t_ecd48334d1085d 3,15,17,30,32,44,46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "e6863e5e19a9292f51bd98a7359ad6b9f099a62f",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_ad8223f6159e26": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ea075-3aab-7740-b39d-dc8f6ac24e3c",
+        "model": "gpt-5.4-mini"
+      },
+      "human_author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
