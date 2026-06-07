@@ -1,0 +1,24 @@
+template-parts/shochu-page-content.php
+  h_53dad1e32c3c71 14
+template-parts/genshu-page-content.php
+  h_53dad1e32c3c71 14
+template-parts/insta-page-content.php
+  h_53dad1e32c3c71 14
+template-parts/other-page-content.php
+  h_53dad1e32c3c71 14
+template-parts/otsumami-page-content.php
+  h_53dad1e32c3c71 14
+template-parts/info-page-content.php
+  h_53dad1e32c3c71 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "c270bbf0b11abf02cda912f15d53a990bff3ab31",
+  "prompts": {},
+  "humans": {
+    "h_53dad1e32c3c71": {
+      "author": "yuremono <5alviaofficinali50@gmail.com>"
+    }
+  }
+}
