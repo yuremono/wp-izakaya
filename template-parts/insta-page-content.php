@@ -11,12 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div id="contents_wrap">
-	<div id="contents" class="clearfix">
+	<div id="contents" >
 		<main>
 		<?php get_template_part( 'template-parts/insta/hero' ); ?>
 		<?php get_template_part( 'template-parts/insta/introduction' ); ?>
 		<?php get_template_part( 'template-parts/insta/posts' ); ?>
 		</main>
 	</div>
-</div>

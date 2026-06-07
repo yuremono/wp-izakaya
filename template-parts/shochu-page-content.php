@@ -11,8 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div id="contents_wrap">
-	<div id="contents" class="clearfix">
+	<div id="contents" >
 		<main>
 		<?php get_template_part( 'template-parts/shochu/hero' ); ?>
 		<?php get_template_part( 'template-parts/shochu/introduction' ); ?>
@@ -25,4 +24,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php get_template_part( 'template-parts/shochu/contact' ); ?>
 		</main>
 	</div>
-</div>

@@ -11,8 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div id="contents_wrap">
-	<div id="contents" class="clearfix">
+	<div id="contents" >
 		<main>
 		<?php get_template_part( 'template-parts/otsumami/hero' ); ?>
 		<?php get_template_part( 'template-parts/otsumami/charcoal-introduction' ); ?>
@@ -22,4 +21,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php get_template_part( 'template-parts/otsumami/contact' ); ?>
 		</main>
 	</div>
-</div>
