@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme helper functions.
+ * テーマ共通の補助関数。
  *
  * @package Theme
  */
@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Normalize a theme-relative path.
+ * テーマ内の相対パスを正規化する。
  *
- * @param string $relative_path Relative path.
+ * @param string $relative_path 相対パス。
  * @return string
  */
 function theme_normalize_relative_path( string $relative_path ): string {
@@ -27,9 +27,9 @@ function theme_normalize_relative_path( string $relative_path ): string {
 }
 
 /**
- * ACF の値が未設定かどうか。
+ * ACF の値が未設定かどうかを判定する。
  *
- * @param mixed $value Raw field value.
+ * @param mixed $value 生のフィールド値。
  * @return bool
  */
 function theme_acf_value_absent( $value ): bool {
@@ -41,9 +41,9 @@ function theme_acf_value_absent( $value ): bool {
 }
 
 /**
- * Cache-busting version from file modification time.
+ * ファイル更新時刻を使ったキャッシュ回避用バージョンを返す。
  *
- * @param string $relative_path Relative asset path.
+ * @param string $relative_path 相対資産パス。
  * @return string
  */
 function theme_asset_version( string $relative_path ): string {

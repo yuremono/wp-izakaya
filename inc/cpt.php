@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom post types and taxonomies.
+ * カスタム投稿タイプとタクソノミー。
  *
  * @package Izakaya
  */
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register editable menu and news content.
+ * 編集可能なメニューとお知らせの投稿タイプを登録する。
  */
 function theme_register_content_types(): void {
 	$post_types = array(
@@ -33,6 +33,7 @@ function theme_register_content_types(): void {
 		),
 	);
 
+	// 投稿タイプごとのラベルと表示設定をまとめて登録する。
 	foreach ( $post_types as $slug => $labels ) {
 		register_post_type(
 			$slug,
@@ -53,6 +54,7 @@ function theme_register_content_types(): void {
 		);
 	}
 
+	// 投稿タイプごとに使うカテゴリーを登録する。
 	theme_register_content_taxonomy( 'drink_category', 'drink', 'ドリンクカテゴリー' );
 	theme_register_content_taxonomy( 'food_category', 'food', '料理カテゴリー' );
 	theme_register_content_taxonomy( 'news_category', 'news', 'お知らせカテゴリー' );
@@ -60,7 +62,7 @@ function theme_register_content_types(): void {
 add_action( 'init', 'theme_register_content_types' );
 
 /**
- * Create stable section terms without overwriting existing terms.
+ * 既存タームを上書きせずに、初期セクションタームを作成する。
  */
 function theme_register_default_content_terms(): void {
 	$terms = array(
@@ -82,6 +84,7 @@ function theme_register_default_content_terms(): void {
 		),
 	);
 
+	// 初期状態で使うタームを、存在しないものだけ追加する。
 	foreach ( $terms as $taxonomy => $taxonomy_terms ) {
 		foreach ( $taxonomy_terms as $slug => $name ) {
 			if ( ! term_exists( $slug, $taxonomy ) ) {
@@ -93,13 +96,14 @@ function theme_register_default_content_terms(): void {
 add_action( 'init', 'theme_register_default_content_terms', 20 );
 
 /**
- * Register a hierarchical content taxonomy.
+ * 階層型のコンテンツ用タクソノミーを登録する。
  *
- * @param string $taxonomy Taxonomy slug.
- * @param string $post_type Post type slug.
- * @param string $label Admin label.
+ * @param string $taxonomy タクソノミースラッグ。
+ * @param string $post_type 投稿タイプスラッグ。
+ * @param string $label 管理画面ラベル。
  */
 function theme_register_content_taxonomy( string $taxonomy, string $post_type, string $label ): void {
+	// 階層型タクソノミーとして、管理画面と REST API の両方で扱えるように登録する。
 	register_taxonomy(
 		$taxonomy,
 		$post_type,

@@ -1,6 +1,6 @@
 <?php
 /**
- * ACF field registration.
+ * ACF フィールド登録。
  *
  * @package Izakaya
  */
@@ -12,13 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register the shared site settings page when ACF supports options pages.
+ * ACF が options page に対応している場合だけ共通設定ページを登録する。
  */
 function theme_register_acf_options_page(): void {
 	if ( ! function_exists( 'acf_add_options_page' ) ) {
 		return;
 	}
 
+	// 管理画面の共通設定ページを追加する。
 	acf_add_options_page(
 		array(
 			'page_title' => '店舗共通情報',
@@ -32,13 +33,13 @@ function theme_register_acf_options_page(): void {
 add_action( 'acf/init', 'theme_register_acf_options_page', 5 );
 
 /**
- * Build a stable ACF field definition.
+ * 安定した ACF フィールド定義を組み立てる。
  *
- * @param string $key Field key suffix.
- * @param string $label Admin label.
- * @param string $name Meta key.
- * @param string $type ACF field type.
- * @param array  $extra Additional field settings.
+ * @param string $key フィールドキーの末尾。
+ * @param string $label 管理画面ラベル。
+ * @param string $name メタキー名。
+ * @param string $type ACF フィールド型。
+ * @param array  $extra 追加設定。
  * @return array<string, mixed>
  */
 function theme_acf_field( string $key, string $label, string $name, string $type = 'text', array $extra = array() ): array {
@@ -54,13 +55,14 @@ function theme_acf_field( string $key, string $label, string $name, string $type
 }
 
 /**
- * Register page, shared and CPT field groups.
+ * ページ別、共通、CPT のフィールドグループを登録する。
  */
 function theme_register_acf_fields(): void {
 	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
 		return;
 	}
 
+	// まず、店舗全体で使う共通設定を登録する。
 	acf_add_local_field_group(
 		array(
 			'key'      => 'group_theme_shop_settings',
@@ -106,6 +108,7 @@ function theme_register_acf_fields(): void {
 		)
 	);
 
+	// 次に、ページテンプレートごとの編集項目をまとめて定義する。
 	$page_groups = array(
 		'front'    => array(
 			'title'    => 'トップページ',
@@ -159,6 +162,7 @@ function theme_register_acf_fields(): void {
 	);
 
 	foreach ( $page_groups as $slug => $group ) {
+		// 各ページに共通する基本項目を組み立てる。
 		$page_fields = array(
 			theme_acf_field( $slug . '_eyebrow', '英字見出し', $slug . '_eyebrow' ),
 			theme_acf_field( $slug . '_heading', '見出し', $slug . '_heading' ),
@@ -219,6 +223,7 @@ function theme_register_acf_fields(): void {
 			),
 		);
 
+		// 焼酎ページだけ、カテゴリ別の追加項目を増やす。
 		if ( 'shochu' === $slug ) {
 			foreach ( array( 'imo', 'mugi', 'kome', 'kokuto', 'other' ) as $section ) {
 				$page_fields[] = theme_acf_field( "shochu_{$section}_heading", strtoupper( $section ) . ' 見出し', "shochu_{$section}_heading" );
@@ -228,6 +233,7 @@ function theme_register_acf_fields(): void {
 			}
 		}
 
+		// トップページだけ、リンク導線用の項目を追加する。
 		if ( 'front' === $slug ) {
 			foreach ( array( 'other', 'otsumami' ) as $section ) {
 				$page_fields[] = theme_acf_field( "front_{$section}_eyebrow", strtoupper( $section ) . ' 英字見出し', "front_{$section}_eyebrow" );
@@ -238,6 +244,7 @@ function theme_register_acf_fields(): void {
 			}
 		}
 
+		// ページテンプレートごとの編集グループとして登録する。
 		acf_add_local_field_group(
 			array(
 				'key'      => 'group_theme_page_' . $slug,
@@ -256,6 +263,7 @@ function theme_register_acf_fields(): void {
 		);
 	}
 
+	// 最後に、投稿タイプごとの追加項目を登録する。
 	$content_groups = array(
 		'drink' => 'ドリンク詳細',
 		'food'  => '料理詳細',
@@ -263,10 +271,12 @@ function theme_register_acf_fields(): void {
 	);
 
 	foreach ( $content_groups as $post_type => $title ) {
+		// 全投稿タイプ共通の項目を作る。
 		$fields = array(
 			theme_acf_field( $post_type . '_external_url', '外部URL', $post_type . '_external_url', 'url' ),
 		);
 		if ( 'news' !== $post_type ) {
+			// 価格とおすすめ表示は、お知らせ以外にだけ付ける。
 			array_unshift(
 				$fields,
 				theme_acf_field( $post_type . '_price', '価格', $post_type . '_price' ),
@@ -274,6 +284,7 @@ function theme_register_acf_fields(): void {
 			);
 		}
 
+		// 投稿タイプ専用の編集グループとして登録する。
 		acf_add_local_field_group(
 			array(
 				'key'      => 'group_theme_' . $post_type,

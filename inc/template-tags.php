@@ -1,6 +1,6 @@
 <?php
 /**
- * Reusable template helpers.
+ * テンプレートで再利用する補助関数群。
  *
  * @package Theme
  */
@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Return a URI below the theme assets directory.
+ * テーマの assets ディレクトリ配下の URI を返す。
  *
- * @param string $relative Relative asset path.
+ * @param string $relative 相対資産パス。
  * @return string
  */
 function theme_source_uri( string $relative = '' ): string {
@@ -22,7 +22,7 @@ function theme_source_uri( string $relative = '' ): string {
 }
 
 /**
- * Return body classes for the custom page templates.
+ * カスタムページテンプレート用の body class を返す。
  *
  * @return array<int, string>
  */
@@ -42,7 +42,7 @@ function theme_body_classes(): array {
 }
 
 /**
- * Determine whether the current request uses a custom template.
+ * 現在のリクエストがカスタムテンプレートかどうかを判定する。
  *
  * @return bool
  */
@@ -61,10 +61,10 @@ function theme_is_custom_view(): bool {
 }
 
 /**
- * Return an editable page value with an ACF-independent fallback.
+ * ACF の有無に依存せず、ページの編集値を返す。
  *
- * @param string $field_name Field name.
- * @param mixed  $fallback   Fallback value.
+ * @param string $field_name フィールド名。
+ * @param mixed  $fallback   フォールバック値。
  * @return mixed
  */
 function theme_meta( string $field_name, $fallback = '' ) {
@@ -84,10 +84,10 @@ function theme_meta( string $field_name, $fallback = '' ) {
 }
 
 /**
- * Return a URL field value.
+ * URL フィールド値を返す。
  *
- * @param string $field_name Field name.
- * @param string $fallback Fallback URL.
+ * @param string $field_name フィールド名。
+ * @param string $fallback フォールバック URL。
  * @return string
  */
 function theme_url( string $field_name, string $fallback = '' ): string {
@@ -97,10 +97,10 @@ function theme_url( string $field_name, string $fallback = '' ): string {
 }
 
 /**
- * Return a shared shop setting with an ACF-independent fallback.
+ * ACF の有無に依存せず、共通店舗設定を返す。
  *
- * @param string $field_name Field name.
- * @param mixed  $fallback Fallback value.
+ * @param string $field_name フィールド名。
+ * @param mixed  $fallback フォールバック値。
  * @return mixed
  */
 function theme_option( string $field_name, $fallback = '' ) {
@@ -110,10 +110,10 @@ function theme_option( string $field_name, $fallback = '' ) {
 }
 
 /**
- * Return a shared shop URL.
+ * 共通店舗 URL を返す。
  *
- * @param string $field_name Field name.
- * @param string $fallback Fallback URL.
+ * @param string $field_name フィールド名。
+ * @param string $fallback フォールバック URL。
  * @return string
  */
 function theme_option_url( string $field_name, string $fallback = '' ): string {
@@ -123,9 +123,9 @@ function theme_option_url( string $field_name, string $fallback = '' ): string {
 }
 
 /**
- * Normalize a phone number for a tel URI.
+ * tel URI 用に電話番号を正規化する。
  *
- * @param string $phone Display phone number.
+ * @param string $phone 表示用電話番号。
  * @return string
  */
 function theme_phone_uri( string $phone ): string {
@@ -133,10 +133,10 @@ function theme_phone_uri( string $phone ): string {
 }
 
 /**
- * Return ordered content posts.
+ * 並び順を考慮したコンテンツ投稿を返す。
  *
- * @param string $post_type Registered post type.
- * @param array  $args Query overrides.
+ * @param string $post_type 登録済み投稿タイプ。
+ * @param array  $args クエリ上書き。
  * @return array<int, WP_Post>
  */
 function theme_get_content_posts( string $post_type, array $args = array() ): array {
@@ -163,11 +163,11 @@ function theme_get_content_posts( string $post_type, array $args = array() ): ar
 }
 
 /**
- * Return post meta through ACF when available.
+ * ACF が使える場合は ACF 経由で投稿メタを返す。
  *
- * @param int    $post_id Post ID.
- * @param string $field_name Field name.
- * @param mixed  $fallback Fallback value.
+ * @param int    $post_id 投稿 ID。
+ * @param string $field_name フィールド名。
+ * @param mixed  $fallback フォールバック値。
  * @return mixed
  */
 function theme_content_meta( int $post_id, string $field_name, $fallback = '' ) {
@@ -179,12 +179,12 @@ function theme_content_meta( int $post_id, string $field_name, $fallback = '' ) 
 }
 
 /**
- * Return content posts assigned to a section taxonomy term.
+ * 指定タクソノミーの term に属するコンテンツ投稿を返す。
  *
- * @param string $post_type Registered post type.
- * @param string $taxonomy Registered taxonomy.
- * @param string $term_slug Term slug.
- * @param array  $args Query overrides.
+ * @param string $post_type 登録済み投稿タイプ。
+ * @param string $taxonomy 登録済みタクソノミー。
+ * @param string $term_slug タームスラッグ。
+ * @param array  $args クエリ上書き。
  * @return array<int, WP_Post>
  */
 function theme_get_section_posts( string $post_type, string $taxonomy, string $term_slug, array $args = array() ): array {
@@ -192,7 +192,7 @@ function theme_get_section_posts( string $post_type, string $taxonomy, string $t
 		$post_type,
 		array_merge(
 			array(
-				// Taxonomy assignment is the canonical section selector for these small menu datasets.
+				// セクション判定はタクソノミー割り当てを正とする。
 				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				'tax_query' => array(
 					array(
@@ -208,11 +208,11 @@ function theme_get_section_posts( string $post_type, string $taxonomy, string $t
 }
 
 /**
- * Return a content post image.
+ * コンテンツ投稿の画像情報を返す。
  *
- * @param int    $post_id Post ID.
- * @param string $fallback_relative Relative fallback asset path.
- * @param string $size Image size.
+ * @param int    $post_id 投稿 ID。
+ * @param string $fallback_relative 相対フォールバック資産パス。
+ * @param string $size 画像サイズ。
  * @return array{url:string,alt:string}
  */
 function theme_content_image_data( int $post_id, string $fallback_relative = '', string $size = 'large' ): array {
@@ -230,10 +230,10 @@ function theme_content_image_data( int $post_id, string $fallback_relative = '',
 }
 
 /**
- * Print CPT items using the existing price/name list structure.
+ * 既存の価格 / 名称リスト構造で CPT を描画する。
  *
- * @param array<int, WP_Post> $posts Content posts.
- * @param string              $price_field Price field name.
+ * @param array<int, WP_Post> $posts コンテンツ投稿。
+ * @param string              $price_field 価格フィールド名。
  */
 function theme_render_menu_posts( array $posts, string $price_field ): void {
 	foreach ( $posts as $post ) {
@@ -247,10 +247,10 @@ function theme_render_menu_posts( array $posts, string $price_field ): void {
 }
 
 /**
- * Print CPT items using the existing feature-card structure.
+ * 既存の feature card 構造で CPT を描画する。
  *
- * @param array<int, WP_Post> $posts Content posts.
- * @param string              $price_field Price field name.
+ * @param array<int, WP_Post> $posts コンテンツ投稿。
+ * @param string              $price_field 価格フィールド名。
  */
 function theme_render_feature_posts( array $posts, string $price_field ): void {
 	foreach ( $posts as $post ) {
@@ -273,9 +273,9 @@ function theme_render_feature_posts( array $posts, string $price_field ): void {
 }
 
 /**
- * Print news posts using the existing SNS item structure.
+ * 既存の SNS アイテム構造でお知らせ投稿を描画する。
  *
- * @param array<int, WP_Post> $posts News posts.
+ * @param array<int, WP_Post> $posts お知らせ投稿。
  */
 function theme_render_news_posts( array $posts ): void {
 	foreach ( $posts as $post ) {
@@ -300,16 +300,16 @@ function theme_render_news_posts( array $posts ): void {
 }
 
 /**
- * Print a dynamic shochu category while preserving the established section classes.
+ * 既存の section class を保ったまま焼酎カテゴリを動的描画する。
  *
- * @param string $term_slug Category term slug.
- * @param string $section_class Main section class.
- * @param string $menu_class Menu section class.
- * @param string $fallback_heading Fallback heading.
- * @param string $fallback_body Fallback body HTML.
- * @param string $fallback_image_1 First fallback image.
- * @param string $fallback_image_2 Second fallback image.
- * @return bool Whether dynamic posts were rendered.
+ * @param string $term_slug カテゴリの term スラッグ。
+ * @param string $section_class メイン section class。
+ * @param string $menu_class メニュー section class。
+ * @param string $fallback_heading 見出しのフォールバック。
+ * @param string $fallback_body 本文 HTML のフォールバック。
+ * @param string $fallback_image_1 1 枚目のフォールバック画像。
+ * @param string $fallback_image_2 2 枚目のフォールバック画像。
+ * @return bool 動的投稿を描画したかどうか。
  */
 function theme_render_shochu_section( string $term_slug, string $section_class, string $menu_class, string $fallback_heading, string $fallback_body, string $fallback_image_1, string $fallback_image_2 ): bool {
 	$posts = theme_get_section_posts( 'drink', 'drink_category', $term_slug );
@@ -339,9 +339,9 @@ function theme_render_shochu_section( string $term_slug, string $section_class, 
 }
 
 /**
- * Print the default site navigation.
+ * デフォルトのサイトナビゲーションを描画する。
  *
- * @param array<string, mixed> $args WordPress fallback callback arguments.
+ * @param array<string, mixed> $args WordPress のフォールバックコールバック引数。
  */
 function theme_menu_fallback( array $args = array() ): void {
 	$items = array(
@@ -364,12 +364,12 @@ function theme_menu_fallback( array $args = array() ): void {
 }
 
 /**
- * Normalize an editable image field.
+ * 編集可能な画像フィールドを正規化する。
  *
- * @param string $field_name Field name.
- * @param string $fallback_relative Relative fallback asset path.
- * @param string $fallback_alt Fallback alternative text.
- * @param string $size WordPress image size.
+ * @param string $field_name フィールド名。
+ * @param string $fallback_relative 相対フォールバック資産パス。
+ * @param string $fallback_alt フォールバック代替テキスト。
+ * @param string $size WordPress 画像サイズ。
  * @return array{url:string,alt:string}
  */
 function theme_image_data( string $field_name, string $fallback_relative = '', string $fallback_alt = '', string $size = 'full' ): array {
@@ -400,12 +400,12 @@ function theme_image_data( string $field_name, string $fallback_relative = '', s
 }
 
 /**
- * Print an editable image.
+ * 編集可能な画像を出力する。
  *
- * @param string $field_name Field name.
- * @param string $fallback_relative Relative fallback asset path.
- * @param string $fallback_alt Fallback alternative text.
- * @param string $css_class Optional CSS class.
+ * @param string $field_name フィールド名。
+ * @param string $fallback_relative 相対フォールバック資産パス。
+ * @param string $fallback_alt フォールバック代替テキスト。
+ * @param string $css_class 任意の CSS class。
  */
 function theme_image( string $field_name, string $fallback_relative = '', string $fallback_alt = '', string $css_class = '' ): void {
 	$image = theme_image_data( $field_name, $fallback_relative, $fallback_alt );
@@ -418,27 +418,27 @@ function theme_image( string $field_name, string $fallback_relative = '', string
 }
 
 /**
- * Print escaped text.
+ * エスケープ済みテキストを出力する。
  *
- * @param string $field_name Field name.
- * @param string $fallback Fallback text.
+ * @param string $field_name フィールド名。
+ * @param string $fallback フォールバック文字列。
  */
 function theme_text( string $field_name, string $fallback = '' ): void {
 	echo esc_html( (string) theme_meta( $field_name, $fallback ) );
 }
 
 /**
- * Print escaped multiline text.
+ * エスケープ済みの複数行テキストを出力する。
  *
- * @param string $field_name Field name.
- * @param string $fallback Fallback text.
+ * @param string $field_name フィールド名。
+ * @param string $fallback フォールバック文字列。
  */
 function theme_lines( string $field_name, string $fallback = '' ): void {
 	echo nl2br( esc_html( (string) theme_meta( $field_name, $fallback ) ) );
 }
 
 /**
- * Return HTML allowed in editable rich text.
+ * 編集可能なリッチテキストで許可する HTML を返す。
  *
  * @return array<string, mixed>
  */
@@ -447,10 +447,10 @@ function theme_allowed_html(): array {
 }
 
 /**
- * Print sanitized rich text.
+ * サニタイズしたリッチテキストを出力する。
  *
- * @param string $field_name Field name.
- * @param string $fallback Fallback HTML.
+ * @param string $field_name フィールド名。
+ * @param string $fallback フォールバック HTML。
  */
 function theme_rich( string $field_name, string $fallback = '' ): void {
 	echo wp_kses( (string) theme_meta( $field_name, $fallback ), theme_allowed_html() );

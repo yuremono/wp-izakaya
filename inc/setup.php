@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme setup.
+ * テーマ初期設定。
  *
  * @package Theme
  */
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Theme supports and menus.
+ * テーマサポートとメニュー位置を設定する。
  */
 function theme_setup(): void {
 	load_theme_textdomain( THEME_GETTEXT_DOMAIN, get_template_directory() . '/languages' );
@@ -40,7 +40,7 @@ function theme_setup(): void {
 add_action( 'after_setup_theme', 'theme_setup' );
 
 /**
- * Show an admin notice when ACF is inactive.
+ * ACF が無効なときに管理画面へ通知を出す。
  */
 function theme_acf_admin_notice(): void {
 	if ( function_exists( 'acf_add_local_field_group' ) || ! current_user_can( 'activate_plugins' ) ) {
@@ -55,7 +55,7 @@ function theme_acf_admin_notice(): void {
 add_action( 'admin_notices', 'theme_acf_admin_notice' );
 
 /**
- * Fallback navigation used until a menu is assigned in the admin screen.
+ * 管理画面でメニュー未設定のときに使うフォールバック。
  */
 function theme_primary_menu_fallback(): void {
 	theme_menu_fallback();

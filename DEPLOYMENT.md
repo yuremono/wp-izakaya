@@ -16,13 +16,11 @@ SSHの読み取り専用調査で、公開URL専用の `wp-config.php` と `wp-c
 
 ## テーマ反映
 
-1. `.env.deploy.example` を `.env.deploy` へコピーする。
-2. `DEPLOY_HOST`、`DEPLOY_USER`、`DEPLOY_PORT`、`DEPLOY_PATH` を再確認する。
-3. `tools-domain/deploy-theme.example.sh` でdry-run結果を確認する。
-4. 必要なら `tools-domain/deploy-theme.example.sh --zip-only` でZIPだけを生成する。
-5. 差分に問題がなければ `tools-domain/deploy-theme.example.sh --apply` で同期する。
-6. 固定ページや ACF の初期値を再投入する必要があるときは、`THEME_BOOTSTRAP_CONFIRM`、`THEME_BOOTSTRAP_EXPECTED_CONFIRM`、`THEME_BOOTSTRAP_EXPECTED_URL` を指定して `wp eval-file` で `tools-domain/bootstrap-site.example.php` を実行する。
-7. 公開URLで全ページ、画像、メニュー、404、JavaScriptエラーを確認する。
+1. `.env.deploy` を用意する。必要な値は `.env.deploy.example` と同じ。
+2. テーマだけを反映するなら `./deploy.sh` を実行する。
+3. 事前確認したいなら `./tools/deploy.sh` を直接呼び、`--apply` を付ける前に dry-run を見る。
+4. 固定ページや ACF の初期値を再投入する必要があるときだけ、`THEME_BOOTSTRAP_CONFIRM`、`THEME_BOOTSTRAP_EXPECTED_CONFIRM`、`THEME_BOOTSTRAP_EXPECTED_URL` を指定して `wp eval-file` で `tools-domain/bootstrap-site.example.php` を実行する。
+5. 公開URLで全ページ、画像、メニュー、404、JavaScriptエラーを確認する。
 
 `tools/deploy.sh` は次の場合に停止します。
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Front-end asset enqueue.
+ * フロントエンド資産の enqueue。
  *
  * @package Izakaya
  */
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Return the page-specific stylesheet basename.
+ * ページ別の stylesheet 名を返す。
  */
 function theme_page_stylesheet(): string {
 	$pages = array( 'genshu', 'shochu', 'other', 'otsumami', 'insta', 'info' );
@@ -27,13 +27,14 @@ function theme_page_stylesheet(): string {
 }
 
 /**
- * Enqueue front-end stylesheets and scripts.
+ * フロントエンドの stylesheet と script を enqueue する。
  */
 function theme_enqueue_assets(): void {
 	if ( ! theme_is_custom_view() ) {
 		return;
 	}
 
+	// Font Awesome は現在未使用のためコメントアウトしている。
 	// wp_enqueue_style(
 	// 	'theme-font-awesome',
 	// 	'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
@@ -78,6 +79,7 @@ function theme_enqueue_assets(): void {
 		array( 'theme-slick' ),
 		theme_asset_version( 'assets/css/' . $page_stylesheet )
 	);
+	// 共通 CSS は現状の構成では未使用のためコメントアウトしている。
 	// wp_enqueue_style(
 	// 	'theme-common',
 	// 	theme_source_uri( 'css/common.css' ),
@@ -115,6 +117,7 @@ function theme_enqueue_assets(): void {
 		true
 	);
 
+	// flipsnap 系は現状未使用のためコメントアウトしている。
 	// wp_enqueue_script(
 	// 	'theme-flipsnap',
 	// 	theme_source_uri( 'js/flipsnap.min.js' ),
@@ -122,6 +125,7 @@ function theme_enqueue_assets(): void {
 	// 	theme_asset_version( 'assets/js/flipsnap.min.js' ),
 	// 	true
 	// );
+	// viewport-extra も現状未使用のためコメントアウトしている。
 	// wp_enqueue_script(
 	// 	'theme-viewport-extra',
 	// 	'https://cdn.jsdelivr.net/npm/viewport-extra@1.0.2/dist/viewport-extra.min.js',
